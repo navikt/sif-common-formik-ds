@@ -27,7 +27,6 @@ function FormikValidationErrorSummary() {
             return <ValidationSummary errors={errors} />;
         }
     }
-
     return null;
 }
 

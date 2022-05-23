@@ -16,7 +16,8 @@ import { getFeilPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import SkjemagruppeQuestion from '../helpers/skjemagruppe-question/SkjemagruppeQuestion';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
 import datepickerUtils from './datepickerUtils';
-import './datepicker.scss';
+import '@navikt/ds-datepicker/lib/index.css';
+import './datepicker.css';
 
 export interface DatepickerLimitiations {
     minDate?: Date;
@@ -103,6 +104,7 @@ function FormikDatepicker<FieldName, ErrorType>({
         <FieldComponent validate={validate ? (value: any) => validate(value, name) : undefined} name={name}>
             {({ field, form }: FieldProps<string>) => {
                 const isInvalid = (feil || getFeilPropForFormikInput({ field, form, context, feil })) !== undefined;
+                console.log(isInvalid);
                 const handleOnDatepickerChange: DatepickerChange = (dateString) => {
                     if (field.value !== dateString) {
                         form.setFieldValue(field.name, dateString);
@@ -125,7 +127,12 @@ function FormikDatepicker<FieldName, ErrorType>({
                             inputLabel={'abc'}
                             locale={getLocaleToUse(locale || intl.locale)}
                             {...restProps}
-                            inputProps={{ name: inputName, placeholder, 'aria-invalid': isInvalid, title: inputTitle }}
+                            inputProps={{
+                                name: inputName,
+                                placeholder,
+                                'aria-invalid': isInvalid,
+                                title: 'inputTitle',
+                            }}
                             value={field.value}
                             calendarDateStringFilter={(value) => {
                                 if (datepickerUtils.isValidFormattedDateString(value)) {

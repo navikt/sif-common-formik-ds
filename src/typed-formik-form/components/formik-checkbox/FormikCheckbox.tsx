@@ -5,8 +5,9 @@ import { TestProps, TypedFormInputValidationProps, UseFastFieldProps } from '../
 import { getFeilPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
 
-interface OwnProps<FieldName> extends Omit<CheckboxProps, 'name'> {
+interface OwnProps<FieldName> extends Omit<CheckboxProps, 'name' | 'error' | 'children'> {
     name: FieldName;
+    label: React.ReactNode;
     feil?: React.ReactNode;
     afterOnChange?: (newValue: boolean) => void;
 }
@@ -18,6 +19,7 @@ export type FormikCheckboxProps<FieldName, ErrorType> = OwnProps<FieldName> &
 
 function FormikCheckbox<FieldName, ErrorType>({
     name,
+    label,
     validate,
     afterOnChange,
     feil,
@@ -46,8 +48,9 @@ function FormikCheckbox<FieldName, ErrorType>({
                             if (context) {
                                 context.onAfterFieldValueSet();
                             }
-                        }}
-                    />
+                        }}>
+                        {label}
+                    </Checkbox>
                 );
             }}
         </FieldComponent>

@@ -25,10 +25,23 @@ module.exports = {
         config.devtool = 'source-map';
 
         // Make whatever fine-grained changes you need
-        config.module.rules = config.module.rules.concat({
-            test: /\.svg$/,
-            use: { loader: 'svg-sprite-loader', options: {} },
-        });
+        config.module.rules = config.module.rules.concat(
+            {
+                test: /\.svg$/,
+                use: { loader: 'svg-sprite-loader', options: {} },
+            }
+            // {
+            //     test: /\.s[ac]ss$/i,
+            //     use: [
+            //         // Creates `style` nodes from JS strings
+            //         'style-loader',
+            //         // Translates CSS into CommonJS
+            //         'css-loader',
+            //         // Compiles Sass to CSS
+            //         'sass-loader',
+            //     ],
+            // }
+        );
 
         config.plugins.push(
             new MiniCssExtractPlugin({
