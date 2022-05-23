@@ -1,5 +1,4 @@
 import { ErrorSummary } from '@navikt/ds-react';
-import { ErrorSummaryItemType } from '@navikt/ds-react/esm/form/error-summary/ErrorSummaryItem';
 import React, { useEffect, useRef } from 'react';
 import ValidationErrorLink from './ValidationErrorLink';
 
@@ -24,8 +23,9 @@ const ValidationSummary: React.FunctionComponent<Props> = ({ title, errors }) =>
     }, []);
     return (
         <ErrorSummary ref={summaryEl} title={title || 'Feil i skjema'}>
-            {errors.map((error) => (
+            {errors.map((error, idx) => (
                 <ValidationErrorLink
+                    key={`validation_error_key_${idx}`}
                     className={'lenke'}
                     onClick={() => {
                         const elementById = document.getElementById(error.fieldName);
@@ -40,9 +40,6 @@ const ValidationSummary: React.FunctionComponent<Props> = ({ title, errors }) =>
                 </ValidationErrorLink>
             ))}
         </ErrorSummary>
-        // customFeilRender={(feil) => (
-        // )}
-        // />
     );
 };
 export default ValidationSummary;

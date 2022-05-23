@@ -4,6 +4,7 @@ import { useIntl } from 'react-intl';
 import { useMediaQuery } from 'react-responsive';
 import { FastField, Field, FieldProps } from 'formik';
 import { CalendarPlacement, Datepicker, DatepickerChange } from '@navikt/ds-datepicker';
+import { v4 as uuid } from 'uuid';
 import {
     DateRange,
     NavFrontendSkjemaFeil,
@@ -15,7 +16,7 @@ import { getFeilPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import SkjemagruppeQuestion from '../helpers/skjemagruppe-question/SkjemagruppeQuestion';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
 import datepickerUtils from './datepickerUtils';
-import './datepicker.less';
+import './datepicker.scss';
 
 export interface DatepickerLimitiations {
     minDate?: Date;
@@ -91,7 +92,7 @@ function FormikDatepicker<FieldName, ErrorType>({
 }: FormikDatepickerProps<FieldName, ErrorType>) {
     const context = React.useContext(TypedFormikFormContext);
     const isWide = useMediaQuery({ minWidth: 736 });
-    const elementId = id || guid();
+    const elementId = id || uuid();
     const position: CalendarPlacement | undefined =
         fullscreenOverlay || (fullScreenOnMobile && isWide === false) ? 'fullscreen' : undefined;
     const inputName = (name || '') as string;
@@ -115,11 +116,13 @@ function FormikDatepicker<FieldName, ErrorType>({
                 };
 
                 return (
-                    <SkjemagruppeQuestion feil={getFeilPropForFormikInput({ field, form, context, feil })}>
-                        <Label htmlFor={elementId}>{label}</Label>
-                        {description && <div className={'skjemaelement__description'}>{description}</div>}
+                    <SkjemagruppeQuestion
+                        error={getFeilPropForFormikInput({ field, form, context, feil })}
+                        legend={label}
+                        description={description}>
                         <Datepicker
                             inputId={elementId}
+                            inputLabel={'abc'}
                             locale={getLocaleToUse(locale || intl.locale)}
                             {...restProps}
                             inputProps={{ name: inputName, placeholder, 'aria-invalid': isInvalid, title: inputTitle }}

@@ -4,6 +4,7 @@ import React from 'react';
 //     FormikCheckboxPanelGroupProps,
 // } from './formik-checkbox-panel-group/FormikCheckboxPanelGroup';
 import FormikCheckbox, { FormikCheckboxProps } from './formik-checkbox/FormikCheckbox';
+import FormikDatepicker, { FormikDatepickerProps } from './formik-datepicker/FormikDatepicker';
 // import FormikConfirmationCheckboxPanel, {
 //     FormikConfirmationCheckboxPanelProps,
 // } from './formik-confirmation-checkbox-panel/FormikConfirmationCheckboxPanel';
@@ -23,8 +24,8 @@ import FormikCheckbox, { FormikCheckboxProps } from './formik-checkbox/FormikChe
 // import FormikTextarea, { FormikTextareaProps } from './formik-textarea/FormikTextarea';
 // import FormikTimeInput, { FormikTimeInputProps } from './formik-time-input/FormikTimeInput';
 // import FormikYesOrNoQuestion, { FormikYesOrNoQuestionProps } from './formik-yes-or-no-question/FormikYesOrNoQuestion';
-// import TypedFormikForm, { TypedFormikFormProps } from './typed-formik-form/TypedFormikForm';
-// import TypedFormikWrapper, { TypedFormikWrapperProps } from './typed-formik-wrapper/TypedFormikWrapper';
+import TypedFormikForm, { TypedFormikFormProps } from './typed-formik-form/TypedFormikForm';
+import TypedFormikWrapper, { TypedFormikWrapperProps } from './typed-formik-wrapper/TypedFormikWrapper';
 // import FormikCheckboxGroup, { FormikCheckboxGroupProps } from './formik-checkbox-group/FormikCheckboxGroup';
 
 export interface TypedFormComponents<FieldName, FormValues, ErrorType> {
@@ -33,12 +34,12 @@ export interface TypedFormComponents<FieldName, FormValues, ErrorType> {
     // CheckboxPanelGroup: (props: FormikCheckboxPanelGroupProps<FieldName, ErrorType>) => JSX.Element;
     // ConfirmationCheckbox: (props: FormikConfirmationCheckboxPanelProps<FieldName, ErrorType>) => JSX.Element;
     // CountrySelect: (props: FormikCountrySelectProps<FieldName, ErrorType>) => JSX.Element;
-    // DatePicker: (props: FormikDatepickerProps<FieldName, ErrorType>) => JSX.Element;
+    DatePicker: (props: FormikDatepickerProps<FieldName, ErrorType>) => JSX.Element;
     // DateIntervalPicker: (props: DateIntervalPickerProps<FieldName, ErrorType>) => JSX.Element;
     // DateRangePicker: (props: FormikDateRangePickerProps<FieldName, ErrorType>) => JSX.Element;
     // FileInput: (props: FormikFileInputProps<FieldName>) => JSX.Element;
-    // Form: (props: TypedFormikFormProps<FormValues, ErrorType>) => JSX.Element;
-    // FormikWrapper: (props: TypedFormikWrapperProps<FormValues>) => JSX.Element;
+    Form: (props: TypedFormikFormProps<FormValues, ErrorType>) => JSX.Element;
+    FormikWrapper: (props: TypedFormikWrapperProps<FormValues>) => JSX.Element;
     // Input: (props: FormikInputProps<FieldName, ErrorType>) => JSX.Element;
     // NumberInput: (props: FormikNumberInputProps<FieldName, ErrorType>) => JSX.Element;
     // InputGroup: (props: FormikInputGroupProps<ErrorType, FieldName>) => JSX.Element;
@@ -71,9 +72,9 @@ export function getTypedFormComponents<FieldName, FormValues, ErrorType = string
         // CountrySelect: (props: FormikCountrySelectProps<FieldName, ErrorType>) => (
         //     <FormikCountrySelect<FieldName, ErrorType> {...props} />
         // ),
-        // DatePicker: (props: FormikDatepickerProps<FieldName, ErrorType>) => (
-        //     <FormikDatepicker<FieldName, ErrorType> {...props} />
-        // ),
+        DatePicker: (props: FormikDatepickerProps<FieldName, ErrorType>) => (
+            <FormikDatepicker<FieldName, ErrorType> {...props} />
+        ),
         // DateIntervalPicker: (props: DateIntervalPickerProps<FieldName, ErrorType>) => (
         //     <FormikDateIntervalPicker<FieldName, ErrorType> {...props} />
         // ),
@@ -81,8 +82,8 @@ export function getTypedFormComponents<FieldName, FormValues, ErrorType = string
         //     <FormikDateRangePicker<FieldName, ErrorType> {...props} />
         // ),
         // FileInput: (props: FormikFileInputProps<FieldName>) => <FormikFileInput<FieldName, ErrorType> {...props} />,
-        // Form: (props: TypedFormikFormProps<FormValues, ErrorType>) => <TypedFormikForm {...props} />,
-        // FormikWrapper: (props: TypedFormikWrapperProps<FormValues>) => <TypedFormikWrapper {...props} />,
+        Form: (props: TypedFormikFormProps<FormValues, ErrorType>) => <TypedFormikForm {...props} />,
+        FormikWrapper: (props: TypedFormikWrapperProps<FormValues>) => <TypedFormikWrapper {...props} />,
         // Input: (props: FormikInputProps<FieldName, ErrorType>) => <FormikInput<FieldName, ErrorType> {...props} />,
         // NumberInput: (props: FormikNumberInputProps<FieldName, ErrorType>) => (
         //     <FormikNumberInput<FieldName, ErrorType> {...props} />

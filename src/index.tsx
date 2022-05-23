@@ -1,35 +1,7 @@
 import React from 'react';
-import '@formatjs/intl-pluralrules/locale-data/en';
-import '@formatjs/intl-pluralrules/locale-data/nb';
-import '@formatjs/intl-pluralrules/locale-data/nn';
-import '@formatjs/intl-pluralrules/polyfill';
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
+import App from './dev/DevApp';
 
-const App: React.FC = () => {
-    return (
-        // <AppIntlProvider locale={'nb'}>
-        <App />
-        // </AppIntlProvider>
-    );
-};
-
-export default App;
-
-// import React from 'react';
-// import ReactDOM from 'react-dom/client';
-// import './index.css';
-// import App from './App';
-// import reportWebVitals from './reportWebVitals';
-
-// const root = ReactDOM.createRoot(
-//   document.getElementById('root') as HTMLElement
-// );
-// root.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>
-// );
-
-// // If you want to start measuring performance in your app, pass a function
-// // to log results (for example: reportWebVitals(console.log))
-// // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();
+Modal.setAppElement('#root');
+ReactDOM.render(<App />, document.getElementById('root'));
