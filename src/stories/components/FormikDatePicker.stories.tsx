@@ -35,12 +35,12 @@ Disabled.parameters = {
     ...Default.parameters,
 };
 
-export const MedFeil = Template.bind({});
-MedFeil.args = {
+export const WithError = Template.bind({});
+WithError.args = {
     ...Default.args,
-    feil: 'Her er det noe feil gitt',
+    error: 'Some error here',
 };
 
-MedFeil.parameters = {
+WithError.parameters = {
     ...Default.parameters,
 };

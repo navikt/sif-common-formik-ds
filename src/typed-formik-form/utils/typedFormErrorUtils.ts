@@ -1,19 +1,19 @@
 import { FieldInputProps, FormikErrors, FormikProps, getIn, isObject } from 'formik';
 import { TypedFormikFormContextType } from '../components/typed-formik-form/TypedFormikForm';
-import { ErrorTypeChecker, NavFrontendSkjemaFeil } from '../types';
+import { ErrorTypeChecker, FormError } from '../types';
 
-export const getFeilPropForFormikInput = ({
-    feil,
+export const getErrorPropForFormikInput = ({
+    error,
     field,
     form,
     context,
 }: {
-    feil: NavFrontendSkjemaFeil;
+    error: FormError;
     field: FieldInputProps<any>;
     form: FormikProps<any>;
     context?: TypedFormikFormContextType;
-}): NavFrontendSkjemaFeil | undefined => {
-    return feil || (context ? context.getAndRenderFieldErrorMessage(field, form) : undefined);
+}): FormError | undefined => {
+    return error || (context ? context.getAndRenderFieldErrorMessage(field, form) : undefined);
 };
 
 export const getErrorForField = <FormValues>(

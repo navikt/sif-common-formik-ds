@@ -2,22 +2,16 @@ import React from 'react';
 import { DayPickerProps } from 'react-day-picker';
 import { useIntl } from 'react-intl';
 import { useMediaQuery } from 'react-responsive';
-import { FastField, Field, FieldProps } from 'formik';
 import { CalendarPlacement, Datepicker, DatepickerChange } from '@navikt/ds-datepicker';
+import '@navikt/ds-datepicker/lib/index.css';
+import { FastField, Field, FieldProps } from 'formik';
 import { v4 as uuid } from 'uuid';
-import {
-    DateRange,
-    NavFrontendSkjemaFeil,
-    TestProps,
-    TypedFormInputValidationProps,
-    UseFastFieldProps,
-} from '../../types';
-import { getFeilPropForFormikInput } from '../../utils/typedFormErrorUtils';
+import { DateRange, FormError, TestProps, TypedFormInputValidationProps, UseFastFieldProps } from '../../types';
+import { getErrorPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import SkjemagruppeQuestion from '../helpers/skjemagruppe-question/SkjemagruppeQuestion';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
-import datepickerUtils from './datepickerUtils';
-import '@navikt/ds-datepicker/lib/index.css';
 import './datepicker.css';
+import datepickerUtils from './datepickerUtils';
 
 export interface DatepickerLimitiations {
     minDate?: Date;
@@ -33,7 +27,7 @@ export interface DatePickerBaseProps<FieldName, ErrorType>
     name: FieldName;
     label: string;
     disabled?: boolean;
-    feil?: NavFrontendSkjemaFeil;
+    error?: FormError;
     inputTitle?: string;
     placeholder?: string;
     dayPickerProps?: Omit<DayPickerProps, 'disabledDays'>;
@@ -77,7 +71,7 @@ function FormikDatepicker<FieldName, ErrorType>({
     showYearSelector,
     fullscreenOverlay,
     fullScreenOnMobile,
-    feil,
+    error,
     minDate,
     maxDate,
     disableWeekend,
@@ -103,8 +97,7 @@ function FormikDatepicker<FieldName, ErrorType>({
     return (
         <FieldComponent validate={validate ? (value: any) => validate(value, name) : undefined} name={name}>
             {({ field, form }: FieldProps<string>) => {
-                const isInvalid = (feil || getFeilPropForFormikInput({ field, form, context, feil })) !== undefined;
-                console.log(isInvalid);
+                const isInvalid = (error || getErrorPropForFormikInput({ field, form, context, error })) !== undefined;
                 const handleOnDatepickerChange: DatepickerChange = (dateString) => {
                     if (field.value !== dateString) {
                         form.setFieldValue(field.name, dateString);
@@ -119,7 +112,7 @@ function FormikDatepicker<FieldName, ErrorType>({
 
                 return (
                     <SkjemagruppeQuestion
-                        error={getFeilPropForFormikInput({ field, form, context, feil })}
+                        error={getErrorPropForFormikInput({ field, form, context, error })}
                         legend={label}
                         description={description}>
                         <Datepicker
@@ -131,7 +124,7 @@ function FormikDatepicker<FieldName, ErrorType>({
                                 name: inputName,
                                 placeholder,
                                 'aria-invalid': isInvalid,
-                                title: 'inputTitle',
+                                title: inputTitle,
                             }}
                             value={field.value}
                             calendarDateStringFilter={(value) => {

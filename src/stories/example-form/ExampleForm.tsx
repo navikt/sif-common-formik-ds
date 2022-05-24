@@ -1,19 +1,23 @@
 import { Heading, Panel } from '@navikt/ds-react';
 import React from 'react';
+import '@navikt/ds-datepicker/lib/index.css';
 import { ISODateString } from '@navikt/ds-datepicker/lib/types';
 import FormBlock from '../../dev/components/form-block/FormBlock';
 import { getTypedFormComponents } from '../../typed-formik-form/components/getTypedFormComponents';
 import { ValidationError } from '../../typed-formik-form/validation/types';
-import '@navikt/ds-datepicker/lib/index.css';
+import { MockAnimals } from '../mock-data';
 
 enum Fields {
     checked = 'checked',
     date = 'date',
+    checkboxes = 'checkboxes',
+    confirmation = 'confirmation',
 }
-
 interface FieldValues {
     [Fields.checked]?: boolean;
     [Fields.date]?: ISODateString;
+    [Fields.checkboxes]?: string[];
+    [Fields.confirmation]?: boolean;
 }
 
 const Form = getTypedFormComponents<Fields, FieldValues, ValidationError>();
@@ -33,6 +37,24 @@ const ExampleForm: React.FunctionComponent = () => {
                             </FormBlock>
                             <FormBlock>
                                 <Form.Checkbox name={Fields.checked} label={'Check this'} description={<>What</>} />
+                            </FormBlock>
+                            <FormBlock>
+                                <Form.CheckboxGroup
+                                    name={Fields.checkboxes}
+                                    legend="Favourite animals"
+                                    description="Choose any animal, just not the cat."
+                                    error={<>This is some error message</>}
+                                    checkboxes={[
+                                        { label: 'Dog', value: MockAnimals.dog },
+                                        { label: 'Cat', value: MockAnimals.cat, disabled: true },
+                                        { label: 'Fish', value: MockAnimals.fish },
+                                    ]}
+                                />
+                            </FormBlock>
+                            <FormBlock>
+                                <Form.ConfirmationCheckbox name={Fields.confirmation} label="abc">
+                                    Please confirm that you do not like cats
+                                </Form.ConfirmationCheckbox>
                             </FormBlock>
                         </>
                     );

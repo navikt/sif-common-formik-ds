@@ -1,9 +1,9 @@
 @import '@navikt/ds-datepicker/lib/index.css';
 
-.skjemagruppe--feil .nav-datovelger__input:not(:focus):not(:hover):not(:active) {
+/* .skjemagruppe--feil .nav-datovelger__input:not(:focus):not(:hover):not(:active) {
     border-color: #ba3a26;
     box-shadow: 0 0 0 1px #ba3a26;
-}
+} */
 
 @media screen and (max-width: 400px) {
     .DayPicker-Month {

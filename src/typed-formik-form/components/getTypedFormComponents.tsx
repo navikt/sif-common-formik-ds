@@ -1,13 +1,17 @@
 /* eslint-disable react/display-name */
 import React from 'react';
+import FormikCheckboxGroup, { FormikCheckboxGroupProps } from './formik-checkbox-group/FormikCheckboxGroup';
 // import FormikCheckboxPanelGroup, {
 //     FormikCheckboxPanelGroupProps,
 // } from './formik-checkbox-panel-group/FormikCheckboxPanelGroup';
 import FormikCheckbox, { FormikCheckboxProps } from './formik-checkbox/FormikCheckbox';
+import FormikConfirmationCheckbox, {
+    FormikConfirmationCheckboxProps,
+} from './formik-confirmation-checkbox/FormikConfirmationCheckbox';
 import FormikDatepicker, { FormikDatepickerProps } from './formik-datepicker/FormikDatepicker';
-// import FormikConfirmationCheckboxPanel, {
-//     FormikConfirmationCheckboxPanelProps,
-// } from './formik-confirmation-checkbox-panel/FormikConfirmationCheckboxPanel';
+// import FormikConfirmationCheckbox, {
+//     FormikConfirmationCheckboxProps,
+// } from './formik-confirmation-checkbox-panel/FormikConfirmationCheckbox';
 // import FormikCountrySelect, { FormikCountrySelectProps } from './formik-country-select/FormikCountrySelect';
 // import FormikDateIntervalPicker, {
 //     DateIntervalPickerProps,
@@ -30,9 +34,9 @@ import TypedFormikWrapper, { TypedFormikWrapperProps } from './typed-formik-wrap
 
 export interface TypedFormComponents<FieldName, FormValues, ErrorType> {
     Checkbox: (props: FormikCheckboxProps<FieldName, ErrorType>) => JSX.Element;
-    // CheckboxGroup: (props: FormikCheckboxGroupProps<FieldName, ErrorType>) => JSX.Element;
+    CheckboxGroup: (props: FormikCheckboxGroupProps<FieldName, ErrorType>) => JSX.Element;
     // CheckboxPanelGroup: (props: FormikCheckboxPanelGroupProps<FieldName, ErrorType>) => JSX.Element;
-    // ConfirmationCheckbox: (props: FormikConfirmationCheckboxPanelProps<FieldName, ErrorType>) => JSX.Element;
+    ConfirmationCheckbox: (props: FormikConfirmationCheckboxProps<FieldName, ErrorType>) => JSX.Element;
     // CountrySelect: (props: FormikCountrySelectProps<FieldName, ErrorType>) => JSX.Element;
     DatePicker: (props: FormikDatepickerProps<FieldName, ErrorType>) => JSX.Element;
     // DateIntervalPicker: (props: DateIntervalPickerProps<FieldName, ErrorType>) => JSX.Element;
@@ -60,15 +64,15 @@ export function getTypedFormComponents<FieldName, FormValues, ErrorType = string
         Checkbox: (props: FormikCheckboxProps<FieldName, ErrorType>) => (
             <FormikCheckbox<FieldName, ErrorType> {...props} />
         ),
-        // CheckboxGroup: (props: FormikCheckboxGroupProps<FieldName, ErrorType>) => (
-        //     <FormikCheckboxGroup<FieldName, ErrorType> {...props} />
-        // ),
+        CheckboxGroup: (props: FormikCheckboxGroupProps<FieldName, ErrorType>) => (
+            <FormikCheckboxGroup<FieldName, ErrorType> {...props} />
+        ),
         // CheckboxPanelGroup: (props: FormikCheckboxPanelGroupProps<FieldName, ErrorType>) => (
         //     <FormikCheckboxPanelGroup<FieldName, ErrorType> {...props} />
         // ),
-        // ConfirmationCheckbox: (props: FormikConfirmationCheckboxPanelProps<FieldName, ErrorType>) => (
-        //     <FormikConfirmationCheckboxPanel<FieldName, ErrorType> {...props} />
-        // ),
+        ConfirmationCheckbox: (props: FormikConfirmationCheckboxProps<FieldName, ErrorType>) => (
+            <FormikConfirmationCheckbox<FieldName, ErrorType> {...props} />
+        ),
         // CountrySelect: (props: FormikCountrySelectProps<FieldName, ErrorType>) => (
         //     <FormikCountrySelect<FieldName, ErrorType> {...props} />
         // ),

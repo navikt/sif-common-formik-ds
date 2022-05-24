@@ -1,14 +1,14 @@
 import { Checkbox, CheckboxProps } from '@navikt/ds-react';
 import React from 'react';
 import { FastField, Field, FieldProps } from 'formik';
-import { TestProps, TypedFormInputValidationProps, UseFastFieldProps } from '../../types';
-import { getFeilPropForFormikInput } from '../../utils/typedFormErrorUtils';
+import { FormError, TestProps, TypedFormInputValidationProps, UseFastFieldProps } from '../../types';
+import { getErrorPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
 
 interface OwnProps<FieldName> extends Omit<CheckboxProps, 'name' | 'error' | 'children'> {
     name: FieldName;
     label: React.ReactNode;
-    feil?: React.ReactNode;
+    error?: FormError;
     afterOnChange?: (newValue: boolean) => void;
 }
 
@@ -22,7 +22,7 @@ function FormikCheckbox<FieldName, ErrorType>({
     label,
     validate,
     afterOnChange,
-    feil,
+    error,
     useFastField,
     ...restProps
 }: FormikCheckboxProps<FieldName, ErrorType>) {
@@ -31,12 +31,12 @@ function FormikCheckbox<FieldName, ErrorType>({
     return (
         <FieldComponent validate={validate ? (value: any) => validate(value, name) : undefined} name={name}>
             {({ field, form }: FieldProps) => {
-                const error = getFeilPropForFormikInput({ field, form, context, feil });
+                const hasError = getErrorPropForFormikInput({ field, form, context, error });
                 return (
                     <Checkbox
                         {...restProps}
                         {...field}
-                        error={error !== undefined}
+                        error={hasError !== undefined}
                         checked={field.value === true}
                         autoComplete="off"
                         onChange={(evt) => {

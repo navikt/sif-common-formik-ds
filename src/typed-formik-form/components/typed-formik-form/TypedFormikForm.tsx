@@ -1,13 +1,7 @@
 import { Button } from '@navikt/ds-react';
 import React, { createContext, useEffect, useRef, useState } from 'react';
 import { FieldInputProps, FormikProps, useFormikContext } from 'formik';
-import {
-    CancelButtonTypes,
-    CustomFormErrorHandler,
-    ErrorTypeChecker,
-    FieldErrorHandler,
-    NavFrontendSkjemaFeil,
-} from '../../types';
+import { CancelButtonTypes, CustomFormErrorHandler, ErrorTypeChecker, FieldErrorHandler, FormError } from '../../types';
 import { getErrorForField, isValidationErrorsVisible } from '../../utils/typedFormErrorUtils';
 import FormikValidationErrorSummary from '../formik-validation-error-summary/FormikValidationErrorSummary';
 import ButtonRow from '../helpers/button-row/ButtonRow';
@@ -35,7 +29,7 @@ export type TypedFormikFormContextType = {
     showErrors: boolean;
     fieldErrorHandler?: FieldErrorHandler<any>;
     isHandledErrorTypeChecker?: ErrorTypeChecker<any>;
-    getAndRenderFieldErrorMessage: (field: FieldInputProps<any>, form: FormikProps<any>) => NavFrontendSkjemaFeil;
+    getAndRenderFieldErrorMessage: (field: FieldInputProps<any>, form: FormikProps<any>) => FormError;
     onAfterFieldValueSet: () => void;
 };
 

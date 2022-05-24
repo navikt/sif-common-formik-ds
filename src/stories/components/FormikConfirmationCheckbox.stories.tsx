@@ -1,26 +1,27 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import FormikCheckbox from '../../typed-formik-form/components/formik-checkbox/FormikCheckbox';
+import FormikConfirmationCheckbox from '../../typed-formik-form/components/formik-confirmation-checkbox/FormikConfirmationCheckbox';
 import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
 
 export default {
-    title: 'Form/FormikCheckbox',
-    component: FormikCheckbox,
+    title: 'Form/FormikConfirmationCheckbox',
+    component: FormikConfirmationCheckbox,
     decorators: [withFormikWrapper],
-} as ComponentMeta<typeof FormikCheckbox>;
+} as ComponentMeta<typeof FormikConfirmationCheckbox>;
 
-const Template: ComponentStory<typeof FormikCheckbox> = (args) => <FormikCheckbox {...args} />;
+const Template: ComponentStory<typeof FormikConfirmationCheckbox> = (args) => <FormikConfirmationCheckbox {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    label: 'FormikCheckbox',
-    name: 'formikCheckbox1',
+    label: 'FormikConfirmationCheckbox',
+    name: 'formikConfirmationCheckbox',
     value: 'abc',
+    children: 'This is the description',
 };
 Default.parameters = {
     formik: {
         initialValues: {
-            formikCheckbox1: true,
+            formikConfirmationCheckbox: false,
         },
     },
 };

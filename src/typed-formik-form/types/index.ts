@@ -16,7 +16,7 @@ export interface DateRange {
 
 export type CancelButtonTypes = 'primary' | 'secondary' | 'tertiary' | 'danger';
 
-export type NavFrontendSkjemaFeil = React.ReactNode | boolean;
+export type FormError = React.ReactNode | boolean;
 
 export interface TestProps {
     'data-testkey'?: string;
