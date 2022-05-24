@@ -13,6 +13,7 @@ enum Fields {
     checkboxes = 'checkboxes',
     confirmation = 'confirmation',
     country = 'country',
+    attachments = 'attachments',
 }
 interface FieldValues {
     [Fields.checked]?: boolean;
@@ -20,6 +21,7 @@ interface FieldValues {
     [Fields.checkboxes]?: string[];
     [Fields.confirmation]?: boolean;
     [Fields.country]?: string;
+    [Fields.attachments]?: string[];
 }
 
 const Form = getTypedFormComponents<Fields, FieldValues, ValidationError>();
@@ -55,6 +57,15 @@ const ExampleForm: React.FunctionComponent = () => {
                             </FormBlock>
                             <FormBlock>
                                 <Form.CountrySelect name={Fields.country} label="Which country is the best for cats?" />
+                            </FormBlock>
+                            <FormBlock>
+                                <Form.FileInput
+                                    name={Fields.attachments}
+                                    label="Choose picture"
+                                    onFilesSelect={(evt) => console.log(evt)}
+                                    accept={'.png'}
+                                    description="Dette er en liten tekst som trengs her"
+                                />
                             </FormBlock>
                             <FormBlock>
                                 <Form.ConfirmationCheckbox name={Fields.confirmation} label="abc">
