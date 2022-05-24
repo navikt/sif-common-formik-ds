@@ -25,7 +25,7 @@ import FormikTextField, { FormikTextFieldProps } from './formik-text-field/Formi
 import FormikRadioGroup, { FormikRadioGroupProps } from './formik-radio-group/FormikRadioGroup';
 // import FormikRadioPanelGroup, { FormikRadioPanelGroupProps } from './formik-radio-panel-group/FormikRadioPanelGroup';
 import FormikSelect, { FormikSelectProps } from './formik-select/FormikSelect';
-// import FormikTextarea, { FormikTextareaProps } from './formik-textarea/FormikTextarea';
+import FormikTextarea, { FormikTextareaProps } from './formik-textarea/FormikTextarea';
 // import FormikTimeInput, { FormikTimeInputProps } from './formik-time-input/FormikTimeInput';
 // import FormikYesOrNoQuestion, { FormikYesOrNoQuestionProps } from './formik-yes-or-no-question/FormikYesOrNoQuestion';
 import TypedFormikForm, { TypedFormikFormProps } from './typed-formik-form/TypedFormikForm';
@@ -50,7 +50,7 @@ export interface TypedFormComponents<FieldName, FormValues, ErrorType> {
     RadioGroup: (props: FormikRadioGroupProps<FieldName, ErrorType>) => JSX.Element;
     // RadioPanelGroup: (props: FormikRadioPanelGroupProps<FieldName, ErrorType>) => JSX.Element;
     Select: (props: FormikSelectProps<FieldName, ErrorType>) => JSX.Element;
-    // Textarea: (props: FormikTextareaProps<FieldName, ErrorType>) => JSX.Element;
+    Textarea: (props: FormikTextareaProps<FieldName, ErrorType>) => JSX.Element;
     // TimeInput: (props: FormikTimeInputProps<FieldName, ErrorType>) => JSX.Element;
     // YesOrNoQuestion: (props: FormikYesOrNoQuestionProps<FieldName, ErrorType>) => JSX.Element;
 }
@@ -104,9 +104,9 @@ export function getTypedFormComponents<FieldName, FormValues, ErrorType = string
         //     <FormikRadioPanelGroup<FieldName, ErrorType> {...props} />
         // ),
         Select: (props: FormikSelectProps<FieldName, ErrorType>) => <FormikSelect<FieldName, ErrorType> {...props} />,
-        // Textarea: (props: FormikTextareaProps<FieldName, ErrorType>) => (
-        //     <FormikTextarea<FieldName, ErrorType> {...props} />
-        // ),
+        Textarea: (props: FormikTextareaProps<FieldName, ErrorType>) => (
+            <FormikTextarea<FieldName, ErrorType> {...props} />
+        ),
         // TimeInput: (props: FormikTimeInputProps<FieldName, ErrorType>) => (
         //     <FormikTimeInput<FieldName, ErrorType> {...props} />
         // ),

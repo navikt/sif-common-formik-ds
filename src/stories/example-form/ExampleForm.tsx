@@ -17,6 +17,7 @@ enum Fields {
     name = 'name',
     group = 'group',
     radio = 'radio',
+    description = 'description',
 }
 interface FieldValues {
     [Fields.checked]?: boolean;
@@ -28,6 +29,7 @@ interface FieldValues {
     [Fields.name]?: string;
     [Fields.group]?: string;
     [Fields.radio]?: MockAnimals;
+    [Fields.description]?: string;
 }
 
 const Form = getTypedFormComponents<Fields, FieldValues, ValidationError>();
@@ -84,14 +86,21 @@ const ExampleForm: React.FunctionComponent = () => {
                             <FormBlock>
                                 <Form.InputGroup name={Fields.group} legend="ABC">
                                     Some content in this group
+                                    <FormBlock>
+                                        <Form.Textarea
+                                            name={Fields.description}
+                                            label="Please type some words"
+                                            maxLength={200}
+                                        />
+                                    </FormBlock>
+                                    <FormBlock>
+                                        <Form.RadioGroup
+                                            legend="Choose ONE animal"
+                                            name={Fields.radio}
+                                            radios={mockAnimalOptions}
+                                        />
+                                    </FormBlock>
                                 </Form.InputGroup>
-                            </FormBlock>
-                            <FormBlock>
-                                <Form.RadioGroup
-                                    legend="Choose ONE animal"
-                                    name={Fields.radio}
-                                    radios={mockAnimalOptions}
-                                />
                             </FormBlock>
                             <FormBlock>
                                 <Form.Select label="Choose ONE animal" name={Fields.radio}>
