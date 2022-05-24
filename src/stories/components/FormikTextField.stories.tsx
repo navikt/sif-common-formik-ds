@@ -1,26 +1,26 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import FormikCheckbox from '../../typed-formik-form/components/formik-checkbox/FormikCheckbox';
+import FormikTextField from '../../typed-formik-form/components/formik-text-field/FormikTextField';
 import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
 
 export default {
-    title: 'Form/FormikCheckbox',
-    component: FormikCheckbox,
+    title: 'Form/FormikTextField',
+    component: FormikTextField,
     decorators: [withFormikWrapper],
-} as ComponentMeta<typeof FormikCheckbox>;
+} as ComponentMeta<typeof FormikTextField>;
 
-const Template: ComponentStory<typeof FormikCheckbox> = (args) => <FormikCheckbox {...args} />;
+const Template: ComponentStory<typeof FormikTextField> = (args) => <FormikTextField {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    label: 'FormikCheckbox',
-    name: 'formikCheckbox',
-    value: 'abc',
+    label: 'FormikTextField',
+    name: 'FormikTextField',
+    description: 'Some description i appropriate',
 };
 Default.parameters = {
     formik: {
         initialValues: {
-            formikCheckbox: true,
+            FormikTextField: 'inital value',
         },
     },
 };
@@ -38,7 +38,7 @@ Disabled.parameters = {
 export const WithError = Template.bind({});
 WithError.args = {
     ...Default.args,
-    error: 'This',
+    error: 'This is the error',
 };
 
 WithError.parameters = {

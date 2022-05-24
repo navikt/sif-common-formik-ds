@@ -2,7 +2,7 @@ import { Checkbox, CheckboxProps } from '@navikt/ds-react';
 import React from 'react';
 import { FastField, Field, FieldProps } from 'formik';
 import { FormError, TestProps, TypedFormInputValidationProps, UseFastFieldProps } from '../../types';
-import { getErrorPropForFormikInput } from '../../utils/typedFormErrorUtils';
+import { getFeilPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
 
 interface OwnProps<FieldName> extends Omit<CheckboxProps, 'name' | 'error' | 'children'> {
@@ -31,7 +31,7 @@ function FormikCheckbox<FieldName, ErrorType>({
     return (
         <FieldComponent validate={validate ? (value: any) => validate(value, name) : undefined} name={name}>
             {({ field, form }: FieldProps) => {
-                const hasError = getErrorPropForFormikInput({ field, form, context, error });
+                const hasError = getFeilPropForFormikInput({ field, form, context, error });
                 return (
                     <Checkbox
                         {...restProps}

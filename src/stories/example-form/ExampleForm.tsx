@@ -14,6 +14,7 @@ enum Fields {
     confirmation = 'confirmation',
     country = 'country',
     attachments = 'attachments',
+    name = 'name',
 }
 interface FieldValues {
     [Fields.checked]?: boolean;
@@ -22,6 +23,7 @@ interface FieldValues {
     [Fields.confirmation]?: boolean;
     [Fields.country]?: string;
     [Fields.attachments]?: string[];
+    [Fields.name]?: string;
 }
 
 const Form = getTypedFormComponents<Fields, FieldValues, ValidationError>();
@@ -65,6 +67,14 @@ const ExampleForm: React.FunctionComponent = () => {
                                     onFilesSelect={(evt) => console.log(evt)}
                                     accept={'.png'}
                                     description="Dette er en liten tekst som trengs her"
+                                />
+                            </FormBlock>
+                            <FormBlock>
+                                <Form.TextField
+                                    name={Fields.name}
+                                    label="What is the name of the beast?"
+                                    description="Yes, I do refer to the cat ..."
+                                    width="l"
                                 />
                             </FormBlock>
                             <FormBlock>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, FieldProps } from 'formik';
 import { TestProps, TypedFormInputValidationProps } from '../../types';
-import { getErrorPropForFormikInput } from '../../utils/typedFormErrorUtils';
+import { getFeilPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
 import { ConfirmationPanel, ConfirmationPanelProps } from '@navikt/ds-react';
 
@@ -29,7 +29,7 @@ function FormikConfirmationCheckbox<FieldName, ErrorType>({
                         {...restProps}
                         {...field}
                         checked={field.value === true}
-                        error={getErrorPropForFormikInput({ field, form, context, error })}
+                        error={getFeilPropForFormikInput({ field, form, context, error })}
                         onChange={(evt) => {
                             form.setFieldValue(`${name}`, (evt as React.ChangeEvent<HTMLInputElement>).target.checked);
                             if (context) {

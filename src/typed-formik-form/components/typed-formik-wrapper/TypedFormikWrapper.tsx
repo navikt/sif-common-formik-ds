@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, FormikProps, FormikConfig } from 'formik';
+import { Formik, FormikConfig, FormikProps } from 'formik';
 
 export interface TypedFormikWrapperProps<FormValues> extends Omit<Partial<FormikProps<FormValues>>, 'initialValues'> {
     initialValues: Partial<FormValues>;

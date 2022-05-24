@@ -2,7 +2,7 @@ import { Checkbox, CheckboxGroup, CheckboxGroupProps, CheckboxProps } from '@nav
 import React from 'react';
 import { FastField, Field, FieldProps } from 'formik';
 import { TestProps, TypedFormInputValidationProps, UseFastFieldProps } from '../../types';
-import { getErrorPropForFormikInput } from '../../utils/typedFormErrorUtils';
+import { getFeilPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
 
 type LocalCheckboxProps = Omit<CheckboxProps, 'children'> & {
@@ -51,7 +51,7 @@ function FormikCheckboxGroup<FieldName, ErrorType>({
                         {...field}
                         value={getFieldValueArray(field.value)}
                         legend={legend}
-                        error={getErrorPropForFormikInput({ field, form, context, error })}
+                        error={getFeilPropForFormikInput({ field, form, context, error })}
                         onChange={(value) => {
                             form.setFieldValue(field.name, value);
                             if (afterOnChange) {

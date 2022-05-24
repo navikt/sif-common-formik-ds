@@ -1,3 +1,5 @@
+import { InputWidths } from '../types';
+
 export function resetFieldValue<FieldName extends string, FormValues>(
     fieldName: FieldName,
     setFieldValue: (field: string, value: any) => void,

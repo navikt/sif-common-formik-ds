@@ -2,7 +2,7 @@ import { SelectProps } from '@navikt/ds-react';
 import React from 'react';
 import { Field, FieldProps } from 'formik';
 import { TestProps, TypedFormInputValidationProps } from '../../types';
-import { getErrorPropForFormikInput } from '../../utils/typedFormErrorUtils';
+import { getFeilPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
 import CountrySelect from './CountrySelect';
 
@@ -34,7 +34,7 @@ function FormikCountrySelect<FieldName, ErrorType>({
                         {...restProps}
                         {...field}
                         data-testkey={testKey}
-                        error={getErrorPropForFormikInput({ field, form, context, error })}
+                        error={getFeilPropForFormikInput({ field, form, context, error })}
                         onChange={(value) => {
                             form.setFieldValue(field.name, value);
                             if (context) {

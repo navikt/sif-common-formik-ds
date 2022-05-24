@@ -7,7 +7,7 @@ import '@navikt/ds-datepicker/lib/index.css';
 import { FastField, Field, FieldProps } from 'formik';
 import { v4 as uuid } from 'uuid';
 import { DateRange, FormError, TestProps, TypedFormInputValidationProps, UseFastFieldProps } from '../../types';
-import { getErrorPropForFormikInput } from '../../utils/typedFormErrorUtils';
+import { getFeilPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import SkjemagruppeQuestion from '../helpers/skjemagruppe-question/SkjemagruppeQuestion';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
 import './datepicker.css';
@@ -97,7 +97,7 @@ function FormikDatepicker<FieldName, ErrorType>({
     return (
         <FieldComponent validate={validate ? (value: any) => validate(value, name) : undefined} name={name}>
             {({ field, form }: FieldProps<string>) => {
-                const isInvalid = (error || getErrorPropForFormikInput({ field, form, context, error })) !== undefined;
+                const isInvalid = (error || getFeilPropForFormikInput({ field, form, context, error })) !== undefined;
                 const handleOnDatepickerChange: DatepickerChange = (dateString) => {
                     if (field.value !== dateString) {
                         form.setFieldValue(field.name, dateString);
@@ -112,7 +112,7 @@ function FormikDatepicker<FieldName, ErrorType>({
 
                 return (
                     <SkjemagruppeQuestion
-                        error={getErrorPropForFormikInput({ field, form, context, error })}
+                        error={getFeilPropForFormikInput({ field, form, context, error })}
                         legend={label}
                         description={description}>
                         <Datepicker

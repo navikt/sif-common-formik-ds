@@ -2,7 +2,7 @@ import { FieldInputProps, FormikErrors, FormikProps, getIn, isObject } from 'for
 import { TypedFormikFormContextType } from '../components/typed-formik-form/TypedFormikForm';
 import { ErrorTypeChecker, FormError } from '../types';
 
-export const getErrorPropForFormikInput = ({
+export const getFeilPropForFormikInput = ({
     error,
     field,
     form,

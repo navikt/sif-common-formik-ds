@@ -37,3 +37,5 @@ export interface CustomFormErrorHandler<ErrorType> {
 
 export type FieldErrorHandler<ErrorType> = (error: ErrorType, fieldName: string) => string;
 export type ErrorTypeChecker<ErrorType = any> = (error: ErrorType) => boolean;
+
+export type InputWidths = '100%' | 'xxl' | 'xl' | 'l' | 'm' | 's' | 'xs' | 'xxs';

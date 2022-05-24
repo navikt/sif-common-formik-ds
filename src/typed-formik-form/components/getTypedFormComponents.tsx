@@ -20,7 +20,7 @@ import FormikCountrySelect, { FormikCountrySelectProps } from './formik-country-
 // import FormikDatepicker, { FormikDatepickerProps } from './formik-datepicker/FormikDatepicker';
 import FormikFileInput, { FormikFileInputProps } from './formik-file-input/FormikFileInput';
 // import FormikInputGroup, { FormikInputGroupProps } from './formik-input-group/FormikInputGroup';
-// import FormikInput, { FormikInputProps } from './formik-input/FormikInput';
+import FormikTextField, { FormikTextFieldProps } from './formik-text-field/FormikTextField';
 // import FormikNumberInput, { FormikNumberInputProps } from './formik-number-input/FormikNumberInput';
 // import FormikRadioGroup, { FormikRadioGroupProps } from './formik-radio-group/FormikRadioGroup';
 // import FormikRadioPanelGroup, { FormikRadioPanelGroupProps } from './formik-radio-panel-group/FormikRadioPanelGroup';
@@ -44,7 +44,7 @@ export interface TypedFormComponents<FieldName, FormValues, ErrorType> {
     FileInput: (props: FormikFileInputProps<FieldName>) => JSX.Element;
     Form: (props: TypedFormikFormProps<FormValues, ErrorType>) => JSX.Element;
     FormikWrapper: (props: TypedFormikWrapperProps<FormValues>) => JSX.Element;
-    // Input: (props: FormikInputProps<FieldName, ErrorType>) => JSX.Element;
+    TextField: (props: FormikTextFieldProps<FieldName, ErrorType>) => JSX.Element;
     // NumberInput: (props: FormikNumberInputProps<FieldName, ErrorType>) => JSX.Element;
     // InputGroup: (props: FormikInputGroupProps<ErrorType, FieldName>) => JSX.Element;
     // RadioGroup: (props: FormikRadioGroupProps<FieldName, ErrorType>) => JSX.Element;
@@ -88,7 +88,9 @@ export function getTypedFormComponents<FieldName, FormValues, ErrorType = string
         FileInput: (props: FormikFileInputProps<FieldName>) => <FormikFileInput<FieldName, ErrorType> {...props} />,
         Form: (props: TypedFormikFormProps<FormValues, ErrorType>) => <TypedFormikForm {...props} />,
         FormikWrapper: (props: TypedFormikWrapperProps<FormValues>) => <TypedFormikWrapper {...props} />,
-        // Input: (props: FormikInputProps<FieldName, ErrorType>) => <FormikInput<FieldName, ErrorType> {...props} />,
+        TextField: (props: FormikTextFieldProps<FieldName, ErrorType>) => (
+            <FormikTextField<FieldName, ErrorType> {...props} />
+        ),
         // NumberInput: (props: FormikNumberInputProps<FieldName, ErrorType>) => (
         //     <FormikNumberInput<FieldName, ErrorType> {...props} />
         // ),
