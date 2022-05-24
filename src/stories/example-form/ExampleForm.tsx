@@ -18,6 +18,7 @@ enum Fields {
     group = 'group',
     radio = 'radio',
     description = 'description',
+    time = 'time',
 }
 interface FieldValues {
     [Fields.checked]?: boolean;
@@ -99,6 +100,9 @@ const ExampleForm: React.FunctionComponent = () => {
                                             name={Fields.radio}
                                             radios={mockAnimalOptions}
                                         />
+                                    </FormBlock>
+                                    <FormBlock>
+                                        <Form.TimeInput label="What's the time?" name={Fields.time} />
                                     </FormBlock>
                                 </Form.InputGroup>
                             </FormBlock>

@@ -23,6 +23,7 @@ function FormikTextField<FieldName, ErrorType>({
     validate,
     width,
     className,
+    autoComplete = 'off',
     useFastField,
     ...restProps
 }: FormikTextFieldProps<FieldName, ErrorType>) {
@@ -36,6 +37,7 @@ function FormikTextField<FieldName, ErrorType>({
                     <TextField
                         {...restProps}
                         {...field}
+                        autoComplete={autoComplete}
                         className={getInputWidthClassName(width, className)}
                         error={getFeilPropForFormikInput({ field, form, context, error })}
                         value={field.value === undefined ? '' : field.value}

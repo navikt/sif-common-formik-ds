@@ -26,7 +26,7 @@ import FormikRadioGroup, { FormikRadioGroupProps } from './formik-radio-group/Fo
 // import FormikRadioPanelGroup, { FormikRadioPanelGroupProps } from './formik-radio-panel-group/FormikRadioPanelGroup';
 import FormikSelect, { FormikSelectProps } from './formik-select/FormikSelect';
 import FormikTextarea, { FormikTextareaProps } from './formik-textarea/FormikTextarea';
-// import FormikTimeInput, { FormikTimeInputProps } from './formik-time-input/FormikTimeInput';
+import FormikTimeInput, { FormikTimeInputProps } from './formik-time-input/FormikTimeInput';
 // import FormikYesOrNoQuestion, { FormikYesOrNoQuestionProps } from './formik-yes-or-no-question/FormikYesOrNoQuestion';
 import TypedFormikForm, { TypedFormikFormProps } from './typed-formik-form/TypedFormikForm';
 import TypedFormikWrapper, { TypedFormikWrapperProps } from './typed-formik-wrapper/TypedFormikWrapper';
@@ -51,7 +51,7 @@ export interface TypedFormComponents<FieldName, FormValues, ErrorType> {
     // RadioPanelGroup: (props: FormikRadioPanelGroupProps<FieldName, ErrorType>) => JSX.Element;
     Select: (props: FormikSelectProps<FieldName, ErrorType>) => JSX.Element;
     Textarea: (props: FormikTextareaProps<FieldName, ErrorType>) => JSX.Element;
-    // TimeInput: (props: FormikTimeInputProps<FieldName, ErrorType>) => JSX.Element;
+    TimeInput: (props: FormikTimeInputProps<FieldName, ErrorType>) => JSX.Element;
     // YesOrNoQuestion: (props: FormikYesOrNoQuestionProps<FieldName, ErrorType>) => JSX.Element;
 }
 
@@ -107,9 +107,9 @@ export function getTypedFormComponents<FieldName, FormValues, ErrorType = string
         Textarea: (props: FormikTextareaProps<FieldName, ErrorType>) => (
             <FormikTextarea<FieldName, ErrorType> {...props} />
         ),
-        // TimeInput: (props: FormikTimeInputProps<FieldName, ErrorType>) => (
-        //     <FormikTimeInput<FieldName, ErrorType> {...props} />
-        // ),
+        TimeInput: (props: FormikTimeInputProps<FieldName, ErrorType>) => (
+            <FormikTimeInput<FieldName, ErrorType> {...props} />
+        ),
         // YesOrNoQuestion: (props: FormikYesOrNoQuestionProps<FieldName, ErrorType>) => (
         //     <FormikYesOrNoQuestion<FieldName, ErrorType> {...props} />
         // ),
