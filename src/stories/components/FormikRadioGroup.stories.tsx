@@ -7,7 +7,7 @@ import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
 import { mockAnimalOptions } from '../mock-data';
 
 export default {
-    title: 'Form/FormikRadioGroup',
+    title: 'Component/FormikRadioGroup',
     component: FormikRadioGroup,
     decorators: [withFormikWrapper],
 } as ComponentMeta<typeof FormikRadioGroup>;

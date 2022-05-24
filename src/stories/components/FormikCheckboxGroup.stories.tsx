@@ -7,7 +7,7 @@ import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
 import { mockAnimalOptions } from '../mock-data';
 
 export default {
-    title: 'Form/FormikCheckboxGroup',
+    title: 'Component/FormikCheckboxGroup',
     component: FormikCheckboxGroup,
     decorators: [withFormikWrapper],
 } as ComponentMeta<typeof FormikCheckboxGroup>;

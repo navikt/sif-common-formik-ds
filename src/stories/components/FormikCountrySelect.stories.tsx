@@ -5,7 +5,7 @@ import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
 // import { withFormik } from 'storybook-formik';
 
 export default {
-    title: 'Form/FormikCountrySelect',
+    title: 'Component/FormikCountrySelect',
     component: FormikCountrySelect,
     decorators: [withFormikWrapper],
 } as ComponentMeta<typeof FormikCountrySelect>;

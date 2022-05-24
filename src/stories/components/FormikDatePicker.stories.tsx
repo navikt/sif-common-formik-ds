@@ -7,7 +7,7 @@ import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
 import { withIntl } from '../decorators/withIntl';
 
 export default {
-    title: 'Form/FormikDatepicker',
+    title: 'Component/FormikDatepicker',
     component: FormikDatepicker,
     decorators: [withIntl, withFormikWrapper],
 } as ComponentMeta<typeof FormikDatepicker>;

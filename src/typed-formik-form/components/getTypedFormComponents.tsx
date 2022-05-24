@@ -27,7 +27,7 @@ import FormikRadioGroup, { FormikRadioGroupProps } from './formik-radio-group/Fo
 import FormikSelect, { FormikSelectProps } from './formik-select/FormikSelect';
 import FormikTextarea, { FormikTextareaProps } from './formik-textarea/FormikTextarea';
 import FormikTimeInput, { FormikTimeInputProps } from './formik-time-input/FormikTimeInput';
-// import FormikYesOrNoQuestion, { FormikYesOrNoQuestionProps } from './formik-yes-or-no-question/FormikYesOrNoQuestion';
+import FormikYesOrNoQuestion, { FormikYesOrNoQuestionProps } from './formik-yes-or-no-question/FormikYesOrNoQuestion';
 import TypedFormikForm, { TypedFormikFormProps } from './typed-formik-form/TypedFormikForm';
 import TypedFormikWrapper, { TypedFormikWrapperProps } from './typed-formik-wrapper/TypedFormikWrapper';
 // import FormikCheckboxGroup, { FormikCheckboxGroupProps } from './formik-checkbox-group/FormikCheckboxGroup';
@@ -52,7 +52,7 @@ export interface TypedFormComponents<FieldName, FormValues, ErrorType> {
     Select: (props: FormikSelectProps<FieldName, ErrorType>) => JSX.Element;
     Textarea: (props: FormikTextareaProps<FieldName, ErrorType>) => JSX.Element;
     TimeInput: (props: FormikTimeInputProps<FieldName, ErrorType>) => JSX.Element;
-    // YesOrNoQuestion: (props: FormikYesOrNoQuestionProps<FieldName, ErrorType>) => JSX.Element;
+    YesOrNoQuestion: (props: FormikYesOrNoQuestionProps<FieldName, ErrorType>) => JSX.Element;
 }
 
 export function getTypedFormComponents<FieldName, FormValues, ErrorType = string>(): TypedFormComponents<
@@ -110,8 +110,8 @@ export function getTypedFormComponents<FieldName, FormValues, ErrorType = string
         TimeInput: (props: FormikTimeInputProps<FieldName, ErrorType>) => (
             <FormikTimeInput<FieldName, ErrorType> {...props} />
         ),
-        // YesOrNoQuestion: (props: FormikYesOrNoQuestionProps<FieldName, ErrorType>) => (
-        //     <FormikYesOrNoQuestion<FieldName, ErrorType> {...props} />
-        // ),
+        YesOrNoQuestion: (props: FormikYesOrNoQuestionProps<FieldName, ErrorType>) => (
+            <FormikYesOrNoQuestion<FieldName, ErrorType> {...props} />
+        ),
     };
 }

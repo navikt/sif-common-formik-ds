@@ -6,6 +6,7 @@ import FormBlock from '../../dev/components/form-block/FormBlock';
 import { getTypedFormComponents } from '../../typed-formik-form/components/getTypedFormComponents';
 import { ValidationError } from '../../typed-formik-form/validation/types';
 import { mockAnimalOptions, MockAnimals } from '../mock-data';
+import { YesOrNo } from '../../typed-formik-form/types';
 
 enum Fields {
     checked = 'checked',
@@ -19,6 +20,7 @@ enum Fields {
     radio = 'radio',
     description = 'description',
     time = 'time',
+    yesOrNo = 'yesOrNo',
 }
 interface FieldValues {
     [Fields.checked]?: boolean;
@@ -31,6 +33,7 @@ interface FieldValues {
     [Fields.group]?: string;
     [Fields.radio]?: MockAnimals;
     [Fields.description]?: string;
+    [Fields.yesOrNo]?: YesOrNo;
 }
 
 const Form = getTypedFormComponents<Fields, FieldValues, ValidationError>();
@@ -103,6 +106,13 @@ const ExampleForm: React.FunctionComponent = () => {
                                     </FormBlock>
                                     <FormBlock>
                                         <Form.TimeInput label="What's the time?" name={Fields.time} />
+                                    </FormBlock>
+                                    <FormBlock>
+                                        <Form.YesOrNoQuestion
+                                            name={Fields.yesOrNo}
+                                            legend={'Are you sure of this?'}
+                                            labels={{ no: 'No', yes: 'Yes' }}
+                                        />
                                     </FormBlock>
                                 </Form.InputGroup>
                             </FormBlock>

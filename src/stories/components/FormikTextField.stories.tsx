@@ -4,7 +4,7 @@ import FormikTextField from '../../typed-formik-form/components/formik-text-fiel
 import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
 
 export default {
-    title: 'Form/FormikTextField',
+    title: 'Component/FormikTextField',
     component: FormikTextField,
     decorators: [withFormikWrapper],
 } as ComponentMeta<typeof FormikTextField>;

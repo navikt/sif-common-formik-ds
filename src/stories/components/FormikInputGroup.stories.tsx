@@ -4,7 +4,7 @@ import FormikInputGroup from '../../typed-formik-form/components/formik-input-gr
 import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
 
 export default {
-    title: 'Form/FormikInputGroup',
+    title: 'Component/FormikInputGroup',
     component: FormikInputGroup,
     decorators: [withFormikWrapper],
 } as ComponentMeta<typeof FormikInputGroup>;

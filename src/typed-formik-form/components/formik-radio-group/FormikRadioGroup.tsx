@@ -33,15 +33,16 @@ function FormikRadioGroup<FieldName, ErrorType>({
         <FieldComponent validate={validate ? (value: any) => validate(value, name) : undefined} name={name}>
             {({ field, form }: FieldProps) => {
                 return (
-                    <RadioGroup {...restProps} error={getFeilPropForFormikInput({ field, form, context, error })}>
+                    <RadioGroup
+                        {...restProps}
+                        error={getFeilPropForFormikInput({ field, form, context, error })}
+                        value={field.value}>
                         {radios.map((rb, idx) => {
-                            const isSelected = field.value === rb.value;
                             return (
                                 <Radio
                                     key={idx}
                                     {...rb}
                                     name={name as any}
-                                    checked={isSelected}
                                     onChange={(evt) => {
                                         form.setFieldValue(field.name, evt.target.value);
                                         if (context) {

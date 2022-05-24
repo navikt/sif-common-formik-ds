@@ -1,26 +1,26 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import FormikTimeInput from '../../typed-formik-form/components/formik-time-input/FormikTimeInput';
+import FormikYesOrNoQuestion from '../../typed-formik-form/components/formik-yes-or-no-question/FormikYesOrNoQuestion';
+import { YesOrNo } from '../../typed-formik-form/types';
 import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
 
 export default {
-    title: 'Component/FormikTimeInput',
-    component: FormikTimeInput,
+    title: 'Component/FormikYesOrNoQuestion',
+    component: FormikYesOrNoQuestion,
     decorators: [withFormikWrapper],
-} as ComponentMeta<typeof FormikTimeInput>;
+} as ComponentMeta<typeof FormikYesOrNoQuestion>;
 
-const Template: ComponentStory<typeof FormikTimeInput> = (args) => <FormikTimeInput {...args} />;
+const Template: ComponentStory<typeof FormikYesOrNoQuestion> = (args) => <FormikYesOrNoQuestion {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    label: 'FormikTimeInput',
-    name: 'FormikTimeInput',
-    description: 'Some description i appropriate',
+    legend: 'Answer yes or no',
+    name: 'yesOrNoQuestion',
 };
 Default.parameters = {
     formik: {
         initialValues: {
-            FormikTimeInput: { hours: '2', minutes: '10' },
+            yesOrNoQuestion: YesOrNo.YES,
         },
     },
 };
@@ -38,7 +38,7 @@ Disabled.parameters = {
 export const WithError = Template.bind({});
 WithError.args = {
     ...Default.args,
-    error: 'This is the error',
+    error: 'This',
 };
 
 WithError.parameters = {

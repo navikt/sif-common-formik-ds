@@ -8,7 +8,7 @@ export enum ValidateYesOrNoError {
 type YesOrNoValidationResult = ValidateYesOrNoError.yesOrNoIsUnanswered | undefined;
 
 const getYesOrNoValidator = (): ValidationFunction<YesOrNoValidationResult> => (value: any) => {
-    const isAnswered = value === YesOrNo.YES || value === YesOrNo.NO || value === YesOrNo.DO_NOT_KNOW;
+    const isAnswered = value === YesOrNo.YES || value === YesOrNo.NO;
     return isAnswered ? undefined : ValidateYesOrNoError.yesOrNoIsUnanswered;
 };
 

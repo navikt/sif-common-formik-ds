@@ -4,7 +4,7 @@ import FormikConfirmationCheckbox from '../../typed-formik-form/components/formi
 import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
 
 export default {
-    title: 'Form/FormikConfirmationCheckbox',
+    title: 'Component/FormikConfirmationCheckbox',
     component: FormikConfirmationCheckbox,
     decorators: [withFormikWrapper],
 } as ComponentMeta<typeof FormikConfirmationCheckbox>;
