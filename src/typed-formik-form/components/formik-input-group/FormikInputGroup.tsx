@@ -4,7 +4,6 @@ import { FastField, Field, FieldProps } from 'formik';
 import { TypedFormInputValidationProps, UseFastFieldProps } from '../../types';
 import { getFeilPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
-import './formikInputGroup.less';
 
 interface OwnProps<FieldName> extends Omit<FieldsetProps, 'name'> {
     name: FieldName;

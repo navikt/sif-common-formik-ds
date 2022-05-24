@@ -22,9 +22,9 @@ import FormikFileInput, { FormikFileInputProps } from './formik-file-input/Formi
 import FormikInputGroup, { FormikInputGroupProps } from './formik-input-group/FormikInputGroup';
 import FormikTextField, { FormikTextFieldProps } from './formik-text-field/FormikTextField';
 // import FormikNumberInput, { FormikNumberInputProps } from './formik-number-input/FormikNumberInput';
-// import FormikRadioGroup, { FormikRadioGroupProps } from './formik-radio-group/FormikRadioGroup';
+import FormikRadioGroup, { FormikRadioGroupProps } from './formik-radio-group/FormikRadioGroup';
 // import FormikRadioPanelGroup, { FormikRadioPanelGroupProps } from './formik-radio-panel-group/FormikRadioPanelGroup';
-// import FormikSelect, { FormikSelectProps } from './formik-select/FormikSelect';
+import FormikSelect, { FormikSelectProps } from './formik-select/FormikSelect';
 // import FormikTextarea, { FormikTextareaProps } from './formik-textarea/FormikTextarea';
 // import FormikTimeInput, { FormikTimeInputProps } from './formik-time-input/FormikTimeInput';
 // import FormikYesOrNoQuestion, { FormikYesOrNoQuestionProps } from './formik-yes-or-no-question/FormikYesOrNoQuestion';
@@ -47,9 +47,9 @@ export interface TypedFormComponents<FieldName, FormValues, ErrorType> {
     TextField: (props: FormikTextFieldProps<FieldName, ErrorType>) => JSX.Element;
     // NumberInput: (props: FormikNumberInputProps<FieldName, ErrorType>) => JSX.Element;
     InputGroup: (props: FormikInputGroupProps<ErrorType, FieldName>) => JSX.Element;
-    // RadioGroup: (props: FormikRadioGroupProps<FieldName, ErrorType>) => JSX.Element;
+    RadioGroup: (props: FormikRadioGroupProps<FieldName, ErrorType>) => JSX.Element;
     // RadioPanelGroup: (props: FormikRadioPanelGroupProps<FieldName, ErrorType>) => JSX.Element;
-    // Select: (props: FormikSelectProps<FieldName, ErrorType>) => JSX.Element;
+    Select: (props: FormikSelectProps<FieldName, ErrorType>) => JSX.Element;
     // Textarea: (props: FormikTextareaProps<FieldName, ErrorType>) => JSX.Element;
     // TimeInput: (props: FormikTimeInputProps<FieldName, ErrorType>) => JSX.Element;
     // YesOrNoQuestion: (props: FormikYesOrNoQuestionProps<FieldName, ErrorType>) => JSX.Element;
@@ -97,13 +97,13 @@ export function getTypedFormComponents<FieldName, FormValues, ErrorType = string
         InputGroup: (props: FormikInputGroupProps<ErrorType, FieldName>) => (
             <FormikInputGroup<ErrorType, FieldName> {...props} />
         ),
-        // RadioGroup: (props: FormikRadioGroupProps<FieldName, ErrorType>) => (
-        //     <FormikRadioGroup<FieldName, ErrorType> {...props} />
-        // ),
+        RadioGroup: (props: FormikRadioGroupProps<FieldName, ErrorType>) => (
+            <FormikRadioGroup<FieldName, ErrorType> {...props} />
+        ),
         // RadioPanelGroup: (props: FormikRadioPanelGroupProps<FieldName, ErrorType>) => (
         //     <FormikRadioPanelGroup<FieldName, ErrorType> {...props} />
         // ),
-        // Select: (props: FormikSelectProps<FieldName, ErrorType>) => <FormikSelect<FieldName, ErrorType> {...props} />,
+        Select: (props: FormikSelectProps<FieldName, ErrorType>) => <FormikSelect<FieldName, ErrorType> {...props} />,
         // Textarea: (props: FormikTextareaProps<FieldName, ErrorType>) => (
         //     <FormikTextarea<FieldName, ErrorType> {...props} />
         // ),

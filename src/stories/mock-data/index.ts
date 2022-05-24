@@ -8,6 +8,7 @@ export enum MockAnimals {
 
 type MockOption = Pick<CheckboxProps, 'value' | 'description' | 'error'> & {
     label: string;
+    value: string;
 };
 
 export const mockAnimalOptions: MockOption[] = [

@@ -5,7 +5,7 @@ import { ISODateString } from '@navikt/ds-datepicker/lib/types';
 import FormBlock from '../../dev/components/form-block/FormBlock';
 import { getTypedFormComponents } from '../../typed-formik-form/components/getTypedFormComponents';
 import { ValidationError } from '../../typed-formik-form/validation/types';
-import { MockAnimals } from '../mock-data';
+import { mockAnimalOptions, MockAnimals } from '../mock-data';
 
 enum Fields {
     checked = 'checked',
@@ -16,6 +16,7 @@ enum Fields {
     attachments = 'attachments',
     name = 'name',
     group = 'group',
+    radio = 'radio',
 }
 interface FieldValues {
     [Fields.checked]?: boolean;
@@ -26,6 +27,7 @@ interface FieldValues {
     [Fields.attachments]?: string[];
     [Fields.name]?: string;
     [Fields.group]?: string;
+    [Fields.radio]?: MockAnimals;
 }
 
 const Form = getTypedFormComponents<Fields, FieldValues, ValidationError>();
@@ -81,8 +83,24 @@ const ExampleForm: React.FunctionComponent = () => {
                             </FormBlock>
                             <FormBlock>
                                 <Form.InputGroup name={Fields.group} legend="ABC">
-                                    sdf
+                                    Some content in this group
                                 </Form.InputGroup>
+                            </FormBlock>
+                            <FormBlock>
+                                <Form.RadioGroup
+                                    legend="Choose ONE animal"
+                                    name={Fields.radio}
+                                    radios={mockAnimalOptions}
+                                />
+                            </FormBlock>
+                            <FormBlock>
+                                <Form.Select label="Choose ONE animal" name={Fields.radio}>
+                                    {mockAnimalOptions.map((a) => (
+                                        <option key={a.value} value={a.value}>
+                                            {a.label}
+                                        </option>
+                                    ))}
+                                </Form.Select>
                             </FormBlock>
                             <FormBlock>
                                 <Form.ConfirmationCheckbox name={Fields.confirmation} label="abc">
