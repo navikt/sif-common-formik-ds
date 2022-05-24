@@ -15,6 +15,7 @@ enum Fields {
     country = 'country',
     attachments = 'attachments',
     name = 'name',
+    group = 'group',
 }
 interface FieldValues {
     [Fields.checked]?: boolean;
@@ -24,6 +25,7 @@ interface FieldValues {
     [Fields.country]?: string;
     [Fields.attachments]?: string[];
     [Fields.name]?: string;
+    [Fields.group]?: string;
 }
 
 const Form = getTypedFormComponents<Fields, FieldValues, ValidationError>();
@@ -76,6 +78,11 @@ const ExampleForm: React.FunctionComponent = () => {
                                     description="Yes, I do refer to the cat ..."
                                     width="l"
                                 />
+                            </FormBlock>
+                            <FormBlock>
+                                <Form.InputGroup name={Fields.group} legend="ABC">
+                                    sdf
+                                </Form.InputGroup>
                             </FormBlock>
                             <FormBlock>
                                 <Form.ConfirmationCheckbox name={Fields.confirmation} label="abc">

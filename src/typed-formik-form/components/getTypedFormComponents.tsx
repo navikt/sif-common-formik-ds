@@ -19,7 +19,7 @@ import FormikCountrySelect, { FormikCountrySelectProps } from './formik-country-
 // import FormikDateRangePicker, { FormikDateRangePickerProps } from './formik-date-range-picker/FormikDateRangePicker';
 // import FormikDatepicker, { FormikDatepickerProps } from './formik-datepicker/FormikDatepicker';
 import FormikFileInput, { FormikFileInputProps } from './formik-file-input/FormikFileInput';
-// import FormikInputGroup, { FormikInputGroupProps } from './formik-input-group/FormikInputGroup';
+import FormikInputGroup, { FormikInputGroupProps } from './formik-input-group/FormikInputGroup';
 import FormikTextField, { FormikTextFieldProps } from './formik-text-field/FormikTextField';
 // import FormikNumberInput, { FormikNumberInputProps } from './formik-number-input/FormikNumberInput';
 // import FormikRadioGroup, { FormikRadioGroupProps } from './formik-radio-group/FormikRadioGroup';
@@ -46,7 +46,7 @@ export interface TypedFormComponents<FieldName, FormValues, ErrorType> {
     FormikWrapper: (props: TypedFormikWrapperProps<FormValues>) => JSX.Element;
     TextField: (props: FormikTextFieldProps<FieldName, ErrorType>) => JSX.Element;
     // NumberInput: (props: FormikNumberInputProps<FieldName, ErrorType>) => JSX.Element;
-    // InputGroup: (props: FormikInputGroupProps<ErrorType, FieldName>) => JSX.Element;
+    InputGroup: (props: FormikInputGroupProps<ErrorType, FieldName>) => JSX.Element;
     // RadioGroup: (props: FormikRadioGroupProps<FieldName, ErrorType>) => JSX.Element;
     // RadioPanelGroup: (props: FormikRadioPanelGroupProps<FieldName, ErrorType>) => JSX.Element;
     // Select: (props: FormikSelectProps<FieldName, ErrorType>) => JSX.Element;
@@ -94,9 +94,9 @@ export function getTypedFormComponents<FieldName, FormValues, ErrorType = string
         // NumberInput: (props: FormikNumberInputProps<FieldName, ErrorType>) => (
         //     <FormikNumberInput<FieldName, ErrorType> {...props} />
         // ),
-        // InputGroup: (props: FormikInputGroupProps<ErrorType, FieldName>) => (
-        //     <FormikInputGroup<ErrorType, FieldName> {...props} />
-        // ),
+        InputGroup: (props: FormikInputGroupProps<ErrorType, FieldName>) => (
+            <FormikInputGroup<ErrorType, FieldName> {...props} />
+        ),
         // RadioGroup: (props: FormikRadioGroupProps<FieldName, ErrorType>) => (
         //     <FormikRadioGroup<FieldName, ErrorType> {...props} />
         // ),
