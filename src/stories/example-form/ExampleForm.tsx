@@ -12,12 +12,14 @@ enum Fields {
     date = 'date',
     checkboxes = 'checkboxes',
     confirmation = 'confirmation',
+    country = 'country',
 }
 interface FieldValues {
     [Fields.checked]?: boolean;
     [Fields.date]?: ISODateString;
     [Fields.checkboxes]?: string[];
     [Fields.confirmation]?: boolean;
+    [Fields.country]?: string;
 }
 
 const Form = getTypedFormComponents<Fields, FieldValues, ValidationError>();
@@ -50,6 +52,9 @@ const ExampleForm: React.FunctionComponent = () => {
                                         { label: 'Fish', value: MockAnimals.fish },
                                     ]}
                                 />
+                            </FormBlock>
+                            <FormBlock>
+                                <Form.CountrySelect name={Fields.country} label="Which country is the best for cats?" />
                             </FormBlock>
                             <FormBlock>
                                 <Form.ConfirmationCheckbox name={Fields.confirmation} label="abc">

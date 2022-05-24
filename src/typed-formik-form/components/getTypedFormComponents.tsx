@@ -12,7 +12,7 @@ import FormikDatepicker, { FormikDatepickerProps } from './formik-datepicker/For
 // import FormikConfirmationCheckbox, {
 //     FormikConfirmationCheckboxProps,
 // } from './formik-confirmation-checkbox-panel/FormikConfirmationCheckbox';
-// import FormikCountrySelect, { FormikCountrySelectProps } from './formik-country-select/FormikCountrySelect';
+import FormikCountrySelect, { FormikCountrySelectProps } from './formik-country-select/FormikCountrySelect';
 // import FormikDateIntervalPicker, {
 //     DateIntervalPickerProps,
 // } from './formik-date-interval-picker/FormikDateIntervalPicker';
@@ -37,7 +37,7 @@ export interface TypedFormComponents<FieldName, FormValues, ErrorType> {
     CheckboxGroup: (props: FormikCheckboxGroupProps<FieldName, ErrorType>) => JSX.Element;
     // CheckboxPanelGroup: (props: FormikCheckboxPanelGroupProps<FieldName, ErrorType>) => JSX.Element;
     ConfirmationCheckbox: (props: FormikConfirmationCheckboxProps<FieldName, ErrorType>) => JSX.Element;
-    // CountrySelect: (props: FormikCountrySelectProps<FieldName, ErrorType>) => JSX.Element;
+    CountrySelect: (props: FormikCountrySelectProps<FieldName, ErrorType>) => JSX.Element;
     DatePicker: (props: FormikDatepickerProps<FieldName, ErrorType>) => JSX.Element;
     // DateIntervalPicker: (props: DateIntervalPickerProps<FieldName, ErrorType>) => JSX.Element;
     // DateRangePicker: (props: FormikDateRangePickerProps<FieldName, ErrorType>) => JSX.Element;
@@ -73,9 +73,9 @@ export function getTypedFormComponents<FieldName, FormValues, ErrorType = string
         ConfirmationCheckbox: (props: FormikConfirmationCheckboxProps<FieldName, ErrorType>) => (
             <FormikConfirmationCheckbox<FieldName, ErrorType> {...props} />
         ),
-        // CountrySelect: (props: FormikCountrySelectProps<FieldName, ErrorType>) => (
-        //     <FormikCountrySelect<FieldName, ErrorType> {...props} />
-        // ),
+        CountrySelect: (props: FormikCountrySelectProps<FieldName, ErrorType>) => (
+            <FormikCountrySelect<FieldName, ErrorType> {...props} />
+        ),
         DatePicker: (props: FormikDatepickerProps<FieldName, ErrorType>) => (
             <FormikDatepicker<FieldName, ErrorType> {...props} />
         ),

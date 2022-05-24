@@ -2,7 +2,6 @@ import { Panel } from '@navikt/ds-react';
 import React from 'react';
 import TypedFormikForm from '../../typed-formik-form/components/typed-formik-form/TypedFormikForm';
 import TypedFormikWrapper from '../../typed-formik-form/components/typed-formik-wrapper/TypedFormikWrapper';
-
 interface Props {
     parameters?: {
         formik?: any;
@@ -20,6 +19,7 @@ export const withFormikWrapper = (Story, args) => (
 export const StoryFormikWrapper: React.FunctionComponent<Props> = (props) => {
     const { children, parameters } = props;
     const { formik, maxWidth = '800px', includeButtons = true } = parameters || {};
+
     return (
         <TypedFormikWrapper
             initialValues={formik?.initialValues || {}}

@@ -1,27 +1,27 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import FormikCheckbox from '../../typed-formik-form/components/formik-checkbox/FormikCheckbox';
+import FormikCountrySelect from '../../typed-formik-form/components/formik-country-select/FormikCountrySelect';
 import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
 // import { withFormik } from 'storybook-formik';
 
 export default {
-    title: 'Form/FormikCheckbox',
-    component: FormikCheckbox,
+    title: 'Form/FormikCountrySelect',
+    component: FormikCountrySelect,
     decorators: [withFormikWrapper],
-} as ComponentMeta<typeof FormikCheckbox>;
+} as ComponentMeta<typeof FormikCountrySelect>;
 
-const Template: ComponentStory<typeof FormikCheckbox> = (args) => <FormikCheckbox {...args} />;
+const Template: ComponentStory<typeof FormikCountrySelect> = (args) => <FormikCountrySelect {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    label: 'FormikCheckbox',
-    name: 'formikCheckbox',
+    label: 'FormikCountrySelect',
+    name: 'country',
     value: 'abc',
 };
 Default.parameters = {
     formik: {
         initialValues: {
-            formikCheckbox: true,
+            country: 'FLK',
         },
     },
 };
