@@ -1,4 +1,4 @@
-import { Fieldset, Panel } from '@navikt/ds-react';
+import { Fieldset } from '@navikt/ds-react';
 import React from 'react';
 import { FormikModalFormAndList, TypedFormInputValidationProps } from '../../sif-common-formik-ds';
 import { ModalFormAndListLabels } from '../../sif-common-formik-ds/components/formik-modal-form/types';
@@ -17,10 +17,8 @@ function ExampleListAndDialog<FieldName>({ name, labels, validate }: Props<Field
             validate={validate ? (value) => validate(value, name) : undefined}
             shouldCloseOnOverlayClick={false}
             maxItems={3}
-            formRenderer={({ onSubmit, onCancel, item, allItems }) => <>This is the form</>}
-            listRenderer={({ items, onEdit, onDelete }) => (
-                <Fieldset legend={'Add some items'}>This is the list</Fieldset>
-            )}
+            formRenderer={() => <>This is the form</>}
+            listRenderer={() => <Fieldset legend={'Add some items'}>This is the list</Fieldset>}
         />
     );
 }

@@ -2,7 +2,7 @@ import { Radio, RadioGroup, RadioGroupProps, RadioProps } from '@navikt/ds-react
 import React, { useContext } from 'react';
 import { FastField, Field, FieldProps } from 'formik';
 import { TestProps, TypedFormInputValidationProps, UseFastFieldProps } from '../../types';
-import { getFeilPropForFormikInput } from '../../utils/typedFormErrorUtils';
+import { getErrorPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
 
 type FormikRadioProp = Omit<RadioProps, 'children'> & {
@@ -35,7 +35,7 @@ function FormikRadioGroup<FieldName, ErrorType>({
                 return (
                     <RadioGroup
                         {...restProps}
-                        error={getFeilPropForFormikInput({ field, form, context, error })}
+                        error={getErrorPropForFormikInput({ field, form, context, error })}
                         value={field.value}>
                         {radios.map((rb, idx) => {
                             return (

@@ -1,14 +1,13 @@
 import React, { useRef } from 'react';
 import { FastField, Field, FieldProps } from 'formik';
 import { InputTime, TestProps, TypedFormInputValidationProps, UseFastFieldProps } from '../../types';
-import { getFeilPropForFormikInput } from '../../utils/typedFormErrorUtils';
+import { getErrorPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
 import TimeInput, { TimeInputLayoutProps, TimeInputRefProps } from './TimeInput';
 import { focusFirstElement } from '../../utils/focusUtils';
 import bemUtils from '../../utils/bemUtils';
 import { TextFieldProps } from '@navikt/ds-react';
 import SkjemagruppeQuestion from '../helpers/skjemagruppe-question/SkjemagruppeQuestion';
-// import { SkjemagruppeQuestion } from '../..';
 
 interface OwnProps<FieldName> extends Omit<TextFieldProps, 'name' | 'onChange'> {
     name: FieldName;
@@ -52,7 +51,7 @@ function FormikTimeInput<FieldName, ErrorType>({
                             )
                         )}
                         ref={ref}
-                        error={getFeilPropForFormikInput({ field, form, context, error })}
+                        error={getErrorPropForFormikInput({ field, form, context, error })}
                         id={name as any}
                         onFocus={(evt) => {
                             if (evt.target.id === ref.current.props.id) {

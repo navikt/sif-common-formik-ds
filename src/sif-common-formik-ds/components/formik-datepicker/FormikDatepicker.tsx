@@ -1,17 +1,19 @@
-import React from 'react';
-import { DayPickerProps } from 'react-day-picker';
-import { useIntl } from 'react-intl';
-import { useMediaQuery } from 'react-responsive';
-import { CalendarPlacement, Datepicker, DatepickerChange } from '@navikt/ds-datepicker';
 import '@navikt/ds-datepicker/lib/index.css';
-import { FastField, Field, FieldProps } from 'formik';
-import { v4 as uuid } from 'uuid';
+import './datepicker.css';
+
+import { CalendarPlacement, Datepicker, DatepickerChange } from '@navikt/ds-datepicker';
 import { DateRange, FormError, TestProps, TypedFormInputValidationProps, UseFastFieldProps } from '../../types';
-import { getFeilPropForFormikInput } from '../../utils/typedFormErrorUtils';
+import { FastField, Field, FieldProps } from 'formik';
+
+import { DayPickerProps } from 'react-day-picker';
+import React from 'react';
 import SkjemagruppeQuestion from '../helpers/skjemagruppe-question/SkjemagruppeQuestion';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
-import './datepicker.css';
 import datepickerUtils from './datepickerUtils';
+import { getErrorPropForFormikInput } from '../../utils/typedFormErrorUtils';
+import { useIntl } from 'react-intl';
+import { useMediaQuery } from 'react-responsive';
+import { v4 as uuid } from 'uuid';
 
 export interface DatepickerLimitiations {
     minDate?: Date;
@@ -97,7 +99,7 @@ function FormikDatepicker<FieldName, ErrorType>({
     return (
         <FieldComponent validate={validate ? (value: any) => validate(value, name) : undefined} name={name}>
             {({ field, form }: FieldProps<string>) => {
-                const isInvalid = (error || getFeilPropForFormikInput({ field, form, context, error })) !== undefined;
+                const isInvalid = (error || getErrorPropForFormikInput({ field, form, context, error })) !== undefined;
                 const handleOnDatepickerChange: DatepickerChange = (dateString) => {
                     if (field.value !== dateString) {
                         form.setFieldValue(field.name, dateString);
@@ -112,7 +114,7 @@ function FormikDatepicker<FieldName, ErrorType>({
 
                 return (
                     <SkjemagruppeQuestion
-                        error={getFeilPropForFormikInput({ field, form, context, error })}
+                        error={getErrorPropForFormikInput({ field, form, context, error })}
                         legend={label}
                         description={description}>
                         <Datepicker

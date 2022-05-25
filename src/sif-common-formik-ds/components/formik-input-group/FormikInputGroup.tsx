@@ -2,7 +2,7 @@ import { Fieldset, FieldsetProps } from '@navikt/ds-react';
 import React from 'react';
 import { FastField, Field, FieldProps } from 'formik';
 import { TypedFormInputValidationProps, UseFastFieldProps } from '../../types';
-import { getFeilPropForFormikInput } from '../../utils/typedFormErrorUtils';
+import { getErrorPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
 
 interface OwnProps<FieldName> extends Omit<FieldsetProps, 'name'> {
@@ -28,7 +28,7 @@ function FormikInputGroup<ErrorType, FieldName>({
                 return (
                     <Fieldset
                         {...restProps}
-                        error={getFeilPropForFormikInput({ field, form, context, error })}></Fieldset>
+                        error={getErrorPropForFormikInput({ field, form, context, error })}></Fieldset>
                 );
             }}
         </FieldComponent>

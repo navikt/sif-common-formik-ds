@@ -1,7 +1,7 @@
 import React from 'react';
 import { FastField, Field, FieldProps } from 'formik';
 import { TestProps, TypedFormInputValidationProps, UseFastFieldProps } from '../../types';
-import { getFeilPropForFormikInput } from '../../utils/typedFormErrorUtils';
+import { getErrorPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
 import { Select, SelectProps } from '@navikt/ds-react';
 
@@ -31,7 +31,7 @@ function FormikSelect<FieldName, ErrorType>({
                     <Select
                         {...restProps}
                         {...field}
-                        error={getFeilPropForFormikInput({ field, form, context, error })}
+                        error={getErrorPropForFormikInput({ field, form, context, error })}
                         autoComplete="off"
                         value={field.value === undefined ? '' : field.value}>
                         {children}
