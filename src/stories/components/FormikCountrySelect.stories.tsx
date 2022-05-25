@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import FormikCountrySelect from '../../typed-formik-form/components/formik-country-select/FormikCountrySelect';
+import FormikCountrySelect from '../../sif-common-formik-ds/components/formik-country-select/FormikCountrySelect';
 import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
 // import { withFormik } from 'storybook-formik';
 

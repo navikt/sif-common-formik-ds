@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import FormikDatepicker, {
     FormikDatepickerProps,
-} from '../../typed-formik-form/components/formik-datepicker/FormikDatepicker';
+} from '../../sif-common-formik-ds/components/formik-datepicker/FormikDatepicker';
 import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
 import { withIntl } from '../decorators/withIntl';
 

@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import FormikTextField from '../../typed-formik-form/components/formik-text-field/FormikTextField';
+import FormikTextField from '../../sif-common-formik-ds/components/formik-text-field/FormikTextField';
 import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
 
 export default {

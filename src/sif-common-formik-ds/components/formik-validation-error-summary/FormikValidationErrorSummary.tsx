@@ -5,7 +5,7 @@ import ValidationSummary, { ValidationSummaryError } from '../helpers/Validation
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
 
 interface Props {
-    wrapper?: (errorSummary) => JSX.Element;
+    wrapper?: (errorSummary: JSX.Element) => JSX.Element;
 }
 
 const FormikValidationErrorSummary: React.FunctionComponent<Props> = ({ wrapper }) => {

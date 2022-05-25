@@ -24,8 +24,8 @@
         "declaration": true,
         "moduleResolution": "node",
         "noEmit": false,
-        "baseUrl": "./src/sif-common-pleiepenger"
+        "baseUrl": "./src/sif-common-formik-ds"
     },
-    "include": ["src/sif-common-pleiepenger"],
+    "include": ["src/sif-common-formik-ds"],
     "exclude": ["node_modules", "src/**/*.spec.*", "src/storybook", "src/**/*.test.*", "src/**/*.stories.*"]
 }
