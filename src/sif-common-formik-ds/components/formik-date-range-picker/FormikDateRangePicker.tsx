@@ -64,14 +64,14 @@ function FormikDateRangePicker<FieldName, ErrorType>({
                     {...fromInputProps}
                     {...{ fullscreenOverlay, fullScreenOnMobile, showYearSelector }}
                     {...fromDateLimitations}
-                    {...locale}
+                    locale={locale as any}
                     useFastField={useFastField}
                 />
                 <FormikDatepicker<FieldName, ErrorType>
                     {...toInputProps}
                     {...{ fullscreenOverlay, fullScreenOnMobile, showYearSelector }}
                     {...toDateLimitations}
-                    {...locale}
+                    locale={locale as any}
                     useFastField={useFastField}
                 />
             </div>

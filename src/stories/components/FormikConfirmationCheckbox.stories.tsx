@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import FormikConfirmationCheckbox from '../../typed-formik-form/components/formik-confirmation-checkbox/FormikConfirmationCheckbox';
+import FormikConfirmationCheckbox from '../../sif-common-formik-ds/components/formik-confirmation-checkbox/FormikConfirmationCheckbox';
 import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
 
 export default {

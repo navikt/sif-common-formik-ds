@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import FormikYesOrNoQuestion from '../../typed-formik-form/components/formik-yes-or-no-question/FormikYesOrNoQuestion';
-import { YesOrNo } from '../../typed-formik-form/types';
+import FormikYesOrNoQuestion from '../../sif-common-formik-ds/components/formik-yes-or-no-question/FormikYesOrNoQuestion';
+import { YesOrNo } from '../../sif-common-formik-ds/types';
 import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
 
 export default {

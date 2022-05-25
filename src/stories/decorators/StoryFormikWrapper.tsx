@@ -1,7 +1,7 @@
 import { Panel } from '@navikt/ds-react';
 import React from 'react';
-import TypedFormikForm from '../../typed-formik-form/components/typed-formik-form/TypedFormikForm';
-import TypedFormikWrapper from '../../typed-formik-form/components/typed-formik-wrapper/TypedFormikWrapper';
+import TypedFormikForm from '../../sif-common-formik-ds/components/typed-formik-form/TypedFormikForm';
+import TypedFormikWrapper from '../../sif-common-formik-ds/components/typed-formik-wrapper/TypedFormikWrapper';
 interface Props {
     parameters?: {
         formik?: any;

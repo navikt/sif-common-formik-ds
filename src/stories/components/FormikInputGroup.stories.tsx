@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import FormikInputGroup from '../../typed-formik-form/components/formik-input-group/FormikInputGroup';
+import FormikInputGroup from '../../sif-common-formik-ds/components/formik-input-group/FormikInputGroup';
 import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
 
 export default {

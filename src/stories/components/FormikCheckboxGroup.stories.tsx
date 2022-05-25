@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import FormikCheckboxGroup, {
     FormikCheckboxGroupProps,
-} from '../../typed-formik-form/components/formik-checkbox-group/FormikCheckboxGroup';
+} from '../../sif-common-formik-ds/components/formik-checkbox-group/FormikCheckboxGroup';
 import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
 import { mockAnimalOptions } from '../mock-data';
 
