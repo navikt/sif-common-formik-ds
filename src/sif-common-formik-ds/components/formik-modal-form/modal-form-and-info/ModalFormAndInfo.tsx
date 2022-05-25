@@ -80,7 +80,11 @@ function ModalFormAndInfo<DataType>({
 
     const content =
         data === undefined ? (
-            <Button type="button" onClick={() => setModalState({ isVisible: true, data })} size="small">
+            <Button
+                type="button"
+                onClick={() => setModalState({ isVisible: true, data })}
+                size="small"
+                variant="secondary">
                 {labels.addLabel}
             </Button>
         ) : (
@@ -96,16 +100,15 @@ function ModalFormAndInfo<DataType>({
                 </div>
                 {renderEditButtons && (
                     <div className={'modalFormAndInfo__buttons'}>
-                        <Button type="button" onClick={() => setModalState({ isVisible: true, data })} size="small">
+                        <Button
+                            type="button"
+                            onClick={() => setModalState({ isVisible: true, data })}
+                            size="small"
+                            variant="secondary">
                             {data ? labels.editLabel : labels.addLabel}
                         </Button>
                         {renderDeleteButton && (
-                            <Button
-                                type="button"
-                                onClick={() => {
-                                    onDelete();
-                                }}
-                                size="small">
+                            <Button type="button" onClick={onDelete} size="small" variant="secondary">
                                 {labels.deleteLabel}
                             </Button>
                         )}

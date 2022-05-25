@@ -111,7 +111,11 @@ function ModalFormAndList<ItemType extends ModalFormAndListListItemBase>({
                     <div
                         style={showListTitle ? { marginTop: '1rem' } : undefined}
                         className={'modalFormAndList__addButton'}>
-                        <Button type="button" onClick={() => setModalState({ isVisible: true })} size="small">
+                        <Button
+                            type="button"
+                            onClick={() => setModalState({ isVisible: true })}
+                            size="small"
+                            variant="secondary">
                             {labels.addLabel}
                         </Button>
                     </div>
