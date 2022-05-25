@@ -7,6 +7,7 @@ import { getTypedFormComponents } from '../../typed-formik-form/components/getTy
 import { YesOrNo } from '../../typed-formik-form/types';
 import { ValidationError } from '../../typed-formik-form/validation/types';
 import { mockAnimalOptions, MockAnimals } from '../mock-data';
+import { getCheckedValidator } from '../../typed-formik-form/validation';
 
 enum Fields {
     checked = 'checked',
@@ -59,14 +60,18 @@ const ExampleForm: React.FunctionComponent = () => {
                                 <Form.DatePicker name={Fields.date} label="Choose a date" />
                             </FormBlock>
                             <FormBlock>
-                                <Form.Checkbox name={Fields.checked} label={'Check this'} description={<>What</>} />
+                                <Form.Checkbox
+                                    name={Fields.checked}
+                                    label={'Check this'}
+                                    description={<>What</>}
+                                    validate={getCheckedValidator()}
+                                />
                             </FormBlock>
                             <FormBlock>
                                 <Form.CheckboxGroup
                                     name={Fields.checkboxes}
                                     legend="Favourite animals"
                                     description="Choose any animal, just not the cat."
-                                    error={<>This is some error message</>}
                                     checkboxes={[
                                         { label: 'Dog', value: MockAnimals.dog },
                                         { label: 'Cat', value: MockAnimals.cat, disabled: true },
