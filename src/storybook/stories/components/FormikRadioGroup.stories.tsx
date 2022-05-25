@@ -1,15 +1,15 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
+import withFormik from 'storybook-formik';
 import FormikRadioGroup, {
     FormikRadioGroupProps,
 } from '../../../sif-common-formik-ds/components/formik-radio-group/FormikRadioGroup';
-import { withFormikWrapper } from '../../decorators/StoryFormikWrapper';
 import { mockAnimalOptions } from '../../mock-data';
 
 export default {
     title: 'Component/FormikRadioGroup',
     component: FormikRadioGroup,
-    decorators: [withFormikWrapper],
+    decorators: [withFormik],
 } as ComponentMeta<typeof FormikRadioGroup>;
 
 const Template: ComponentStory<typeof FormikRadioGroup> = (args) => <FormikRadioGroup {...args} />;
@@ -31,24 +31,4 @@ Default.parameters = {
             FormikRadioGroup: ['dog'],
         },
     },
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-    ...Default.args,
-    disabled: true,
-};
-
-Disabled.parameters = {
-    ...Default.parameters,
-};
-
-export const WithError = Template.bind({});
-WithError.args = {
-    ...Default.args,
-    error: 'There is something wrong here',
-};
-
-WithError.parameters = {
-    ...Default.parameters,
 };

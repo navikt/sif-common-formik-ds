@@ -19,20 +19,23 @@ export const withFormikWrapper = (Story, args) => (
 export const StoryFormikWrapper: React.FunctionComponent<Props> = (props) => {
     const { children, parameters } = props;
     const { formik, maxWidth = '800px', includeButtons = true } = parameters || {};
+    const initialValues = formik?.initialValues || {};
 
     return (
         <TypedFormikWrapper
-            initialValues={formik?.initialValues || {}}
+            initialValues={initialValues}
             onSubmit={(values) => {
                 console.log('StoryFormikProvider', values);
             }}
-            renderForm={() => (
-                <TypedFormikForm includeButtons={includeButtons}>
-                    <Panel style={{ maxWidth: maxWidth }} border={true}>
-                        {children}
-                    </Panel>
-                </TypedFormikForm>
-            )}
+            renderForm={() => {
+                return (
+                    <TypedFormikForm includeButtons={includeButtons}>
+                        <Panel style={{ maxWidth: maxWidth }} border={true}>
+                            {children}
+                        </Panel>
+                    </TypedFormikForm>
+                );
+            }}
         />
     );
 };

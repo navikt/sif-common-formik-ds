@@ -1,13 +1,13 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
+import withFormik from 'storybook-formik';
 import FormikYesOrNoQuestion from '../../../sif-common-formik-ds/components/formik-yes-or-no-question/FormikYesOrNoQuestion';
 import { YesOrNo } from '../../../sif-common-formik-ds/types';
-import { withFormikWrapper } from '../../decorators/StoryFormikWrapper';
 
 export default {
     title: 'Component/FormikYesOrNoQuestion',
     component: FormikYesOrNoQuestion,
-    decorators: [withFormikWrapper],
+    decorators: [withFormik],
 } as ComponentMeta<typeof FormikYesOrNoQuestion>;
 
 const Template: ComponentStory<typeof FormikYesOrNoQuestion> = (args) => <FormikYesOrNoQuestion {...args} />;
@@ -23,24 +23,4 @@ Default.parameters = {
             yesOrNoQuestion: YesOrNo.YES,
         },
     },
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-    ...Default.args,
-    disabled: true,
-};
-
-Disabled.parameters = {
-    ...Default.parameters,
-};
-
-export const WithError = Template.bind({});
-WithError.args = {
-    ...Default.args,
-    error: 'This',
-};
-
-WithError.parameters = {
-    ...Default.parameters,
 };

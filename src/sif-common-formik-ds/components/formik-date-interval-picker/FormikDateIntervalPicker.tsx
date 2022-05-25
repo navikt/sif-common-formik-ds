@@ -1,5 +1,6 @@
 import React from 'react';
-import { TypedFormInputValidationProps, UseFastFieldProps } from '../../types';
+import { FormError, TypedFormInputValidationProps, UseFastFieldProps } from '../../types';
+import { getErrorPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import FormikDatepicker, { FormikDatepickerProps } from '../formik-datepicker/FormikDatepicker';
 import FormikInputGroup from '../formik-input-group/FormikInputGroup';
 import './dateIntervalPicker.scss';
@@ -11,6 +12,7 @@ export interface DateIntervalPickerProps<FieldName, ErrorType>
     fromDatepickerProps: FormikDatepickerProps<FieldName, ErrorType>;
     toDatepickerProps: FormikDatepickerProps<FieldName, ErrorType>;
     description?: React.ReactNode;
+    error?: FormError;
 }
 
 function FormikDateIntervalPicker<FieldName, ErrorType>({
@@ -19,6 +21,7 @@ function FormikDateIntervalPicker<FieldName, ErrorType>({
     toDatepickerProps,
     description,
     useFastField,
+    error,
     validate,
 }: DateIntervalPickerProps<FieldName, ErrorType>) {
     const name = `${fromDatepickerProps.name}_${toDatepickerProps.name}` as any;
@@ -26,6 +29,7 @@ function FormikDateIntervalPicker<FieldName, ErrorType>({
         <FormikInputGroup
             name={name}
             validate={validate ? (value: any) => validate(value, name) : undefined}
+            error={error}
             legend={legend}
             description={description}
             className="dateIntervalPicker">
