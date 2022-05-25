@@ -5,7 +5,6 @@ import FormikRadioGroup, { FormikRadioGroupProps } from '../formik-radio-group/F
 export interface FormikYesOrNoQuestionProps<FieldName, ErrorType>
     extends TestProps,
         Omit<FormikRadioGroupProps<FieldName, ErrorType>, 'radios'> {
-    useTwoColumns?: boolean;
     labels?: {
         [YesOrNo.YES]?: string;
         [YesOrNo.NO]?: string;
@@ -15,7 +14,6 @@ export interface FormikYesOrNoQuestionProps<FieldName, ErrorType>
 function FormikYesOrNoQuestion<FieldName, ErrorType>({
     name,
     labels,
-    useTwoColumns = true,
     ...restProps
 }: FormikYesOrNoQuestionProps<FieldName, ErrorType> & TypedFormInputValidationProps<FieldName, ErrorType>) {
     const { yes: yesLabel = 'Ja', no: noLabel = 'Nei' } = labels || {};
@@ -31,7 +29,6 @@ function FormikYesOrNoQuestion<FieldName, ErrorType>({
                 { label: noLabel, value: YesOrNo.NO, ['data-testkey']: testKey ? `${testKey}_no` : undefined },
             ]}
             name={name}
-            // useTwoColumns={includeDoNotKnowOption ? false : useTwoColumns}
         />
     );
 }

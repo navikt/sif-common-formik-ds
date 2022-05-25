@@ -4,9 +4,9 @@ import '@navikt/ds-datepicker/lib/index.css';
 import { ISODateString } from '@navikt/ds-datepicker/lib/types';
 import FormBlock from '../../dev/components/form-block/FormBlock';
 import { getTypedFormComponents } from '../../typed-formik-form/components/getTypedFormComponents';
+import { YesOrNo } from '../../typed-formik-form/types';
 import { ValidationError } from '../../typed-formik-form/validation/types';
 import { mockAnimalOptions, MockAnimals } from '../mock-data';
-import { YesOrNo } from '../../typed-formik-form/types';
 
 enum Fields {
     checked = 'checked',
@@ -21,6 +21,8 @@ enum Fields {
     description = 'description',
     time = 'time',
     yesOrNo = 'yesOrNo',
+    dateRange_from = 'dateRange_from',
+    dateRange_to = 'dateRange_to',
 }
 interface FieldValues {
     [Fields.checked]?: boolean;
@@ -34,20 +36,25 @@ interface FieldValues {
     [Fields.radio]?: MockAnimals;
     [Fields.description]?: string;
     [Fields.yesOrNo]?: YesOrNo;
+    [Fields.dateRange_from]?: Date;
+    [Fields.dateRange_to]?: Date;
 }
 
 const Form = getTypedFormComponents<Fields, FieldValues, ValidationError>();
 
 const ExampleForm: React.FunctionComponent = () => {
     return (
-        <Panel border={true}>
+        <Panel border={true} style={{ margin: '1rem' }}>
             <Heading size="medium">Example form</Heading>
             <Form.FormikWrapper
                 initialValues={{}}
                 onSubmit={(values) => console.log(values)}
-                renderForm={() => {
+                renderForm={({ values }) => {
                     return (
-                        <>
+                        <Form.Form
+                            includeButtons={true}
+                            onValidSubmit={() => console.log('submit')}
+                            onCancel={() => console.log('cancel')}>
                             <FormBlock>
                                 <Form.DatePicker name={Fields.date} label="Choose a date" />
                             </FormBlock>
@@ -88,34 +95,38 @@ const ExampleForm: React.FunctionComponent = () => {
                                 />
                             </FormBlock>
                             <FormBlock>
-                                <Form.InputGroup name={Fields.group} legend="ABC">
-                                    Some content in this group
-                                    <FormBlock>
-                                        <Form.Textarea
-                                            name={Fields.description}
-                                            label="Please type some words"
-                                            maxLength={200}
-                                        />
-                                    </FormBlock>
-                                    <FormBlock>
-                                        <Form.RadioGroup
-                                            legend="Choose ONE animal"
-                                            name={Fields.radio}
-                                            radios={mockAnimalOptions}
-                                        />
-                                    </FormBlock>
-                                    <FormBlock>
-                                        <Form.TimeInput label="What's the time?" name={Fields.time} />
-                                    </FormBlock>
-                                    <FormBlock>
-                                        <Form.YesOrNoQuestion
-                                            name={Fields.yesOrNo}
-                                            legend={'Are you sure of this?'}
-                                            labels={{ no: 'No', yes: 'Yes' }}
-                                        />
-                                    </FormBlock>
-                                </Form.InputGroup>
+                                <Form.YesOrNoQuestion
+                                    name={Fields.yesOrNo}
+                                    legend={'Do you want more questions?'}
+                                    labels={{ no: 'No', yes: 'Yes' }}
+                                />
                             </FormBlock>
+                            {values.yesOrNo === YesOrNo.YES && (
+                                <FormBlock margin="l">
+                                    <Panel border={true}>
+                                        <Form.InputGroup name={Fields.group} legend="ABC">
+                                            Some content in this group
+                                            <FormBlock>
+                                                <Form.Textarea
+                                                    name={Fields.description}
+                                                    label="Please type some words"
+                                                    maxLength={200}
+                                                />
+                                            </FormBlock>
+                                            <FormBlock>
+                                                <Form.RadioGroup
+                                                    legend="Choose ONE animal"
+                                                    name={Fields.radio}
+                                                    radios={mockAnimalOptions}
+                                                />
+                                            </FormBlock>
+                                            <FormBlock>
+                                                <Form.TimeInput label="What's the time?" name={Fields.time} />
+                                            </FormBlock>
+                                        </Form.InputGroup>
+                                    </Panel>
+                                </FormBlock>
+                            )}
                             <FormBlock>
                                 <Form.Select label="Choose ONE animal" name={Fields.radio}>
                                     {mockAnimalOptions.map((a) => (
@@ -126,11 +137,25 @@ const ExampleForm: React.FunctionComponent = () => {
                                 </Form.Select>
                             </FormBlock>
                             <FormBlock>
+                                <Form.DateRangePicker
+                                    legend="Choose some daterange"
+                                    fromInputProps={{ label: 'From', name: Fields.dateRange_from }}
+                                    toInputProps={{ label: 'To', name: Fields.dateRange_to }}
+                                />
+                            </FormBlock>
+                            <FormBlock>
+                                <Form.DateIntervalPicker
+                                    legend="Choose a date interval"
+                                    fromDatepickerProps={{ label: 'From', name: Fields.dateRange_from }}
+                                    toDatepickerProps={{ label: 'To', name: Fields.dateRange_to }}
+                                />
+                            </FormBlock>
+                            <FormBlock>
                                 <Form.ConfirmationCheckbox name={Fields.confirmation} label="abc">
                                     Please confirm that you do not like cats
                                 </Form.ConfirmationCheckbox>
                             </FormBlock>
-                        </>
+                        </Form.Form>
                     );
                 }}
             />
