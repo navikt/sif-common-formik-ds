@@ -12,7 +12,7 @@
         "build-lib": "npm-run-all clean-lib compile-lib-script copy-files-to-lib",
         "clean-lib": "rimraf ./lib",
         "compile-lib-script": "tsc -p tsconfig-build-lib.json",
-        "copy-files-to-lib": "copyfiles -u 2 \"src/typed-formik-form/**/*.scss\" lib"
+        "copy-files-to-lib": "copyfiles -u 2 \"src/sif-common-formik-ds/**/*.scss\" lib"
     },
     "dependencies": {
         "@types/jest": "^27.5.1",

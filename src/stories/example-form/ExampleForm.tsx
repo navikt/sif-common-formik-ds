@@ -11,6 +11,7 @@ import { getCheckedValidator, getRequiredFieldValidator } from '../../sif-common
 import FormikValidationErrorSummary from '../../sif-common-formik-ds/components/formik-validation-error-summary/FormikValidationErrorSummary';
 import getIntlFormErrorHandler from '../../sif-common-formik-ds/validation/intlFormErrorHandler';
 import { useIntl } from 'react-intl';
+import ExampleListAndDialog from './ExampleListAndDialog';
 
 enum Fields {
     checked = 'checked',
@@ -27,6 +28,7 @@ enum Fields {
     yesOrNo = 'yesOrNo',
     dateRange_from = 'dateRange_from',
     dateRange_to = 'dateRange_to',
+    list = 'list',
 }
 interface FieldValues {
     [Fields.checked]?: boolean;
@@ -42,6 +44,7 @@ interface FieldValues {
     [Fields.yesOrNo]?: YesOrNo;
     [Fields.dateRange_from]?: Date;
     [Fields.dateRange_to]?: Date;
+    [Fields.list]?: any[];
 }
 
 const Form = getTypedFormComponents<Fields, FieldValues, ValidationError>();
@@ -70,6 +73,12 @@ const ExampleForm: React.FunctionComponent = () => {
                                     label={'Check this'}
                                     description={<>What</>}
                                     validate={getCheckedValidator()}
+                                />
+                            </FormBlock>
+                            <FormBlock>
+                                <ExampleListAndDialog
+                                    name={Fields.list}
+                                    labels={{ addLabel: 'Legg til', modalTitle: 'Some title', listTitle: 'Some items' }}
                                 />
                             </FormBlock>
                             <FormBlock>

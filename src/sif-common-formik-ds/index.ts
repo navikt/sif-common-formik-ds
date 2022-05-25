@@ -6,8 +6,8 @@ export { default as FormikDatepicker } from './components/formik-datepicker/Form
 export { default as FormikFileInput } from './components/formik-file-input/FormikFileInput';
 export { default as FormikTextField } from './components/formik-text-field/FormikTextField';
 export { default as FormikInputGroup } from './components/formik-input-group/FormikInputGroup';
-// export { default as FormikModalFormAndList } from './components/formik-modal-form-and-list/FormikModalFormAndList';
-// export { default as FormikModalFormAndInfo } from './components/formik-modal-form-and-list/FormikModalFormAndInfo';
+export { default as FormikModalFormAndList } from './components/formik-modal-form/FormikModalFormAndList';
+export { default as FormikModalFormAndInfo } from './components/formik-modal-form/FormikModalFormAndInfo';
 export { default as FormikRadioGroup } from './components/formik-radio-group/FormikRadioGroup';
 export { default as FormikSelect } from './components/formik-select/FormikSelect';
 export { default as FormikTextarea } from './components/formik-textarea/FormikTextarea';
