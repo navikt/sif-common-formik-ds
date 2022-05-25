@@ -1,6 +1,5 @@
 import React from 'react';
 import { FormError, TypedFormInputValidationProps, UseFastFieldProps } from '../../types';
-import { getErrorPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import FormikDatepicker, { FormikDatepickerProps } from '../formik-datepicker/FormikDatepicker';
 import FormikInputGroup from '../formik-input-group/FormikInputGroup';
 import './dateIntervalPicker.scss';

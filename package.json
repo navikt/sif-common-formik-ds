@@ -1,6 +1,6 @@
 {
     "name": "sif-common-formik-ds",
-    "version": "0.1.0-beta.0",
+    "version": "0.1.0-beta.1",
     "private": false,
     "scripts": {
         "start": "react-scripts start",
