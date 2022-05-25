@@ -18,7 +18,7 @@ export type CancelButtonTypes = 'primary' | 'secondary' | 'tertiary' | 'danger';
 export type FormError = React.ReactNode | boolean;
 
 export interface TestProps {
-    'data-testkey'?: string;
+    'data-testid'?: string;
 }
 
 export interface TypedFormInputValidationProps<FieldName, ErrorType> {

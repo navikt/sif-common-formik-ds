@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import FormikTimeInput from '../../sif-common-formik-ds/components/formik-time-input/FormikTimeInput';
-import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
+import FormikTimeInput from '../../../sif-common-formik-ds/components/formik-time-input/FormikTimeInput';
+import { withFormikWrapper } from '../../decorators/StoryFormikWrapper';
 
 export default {
     title: 'Component/FormikTimeInput',

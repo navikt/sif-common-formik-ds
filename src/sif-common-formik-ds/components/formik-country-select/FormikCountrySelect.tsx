@@ -25,7 +25,7 @@ function FormikCountrySelect<FieldName, ErrorType>({
     ...restProps
 }: FormikCountrySelectProps<FieldName, ErrorType>) {
     const context = React.useContext(TypedFormikFormContext);
-    const testKey = restProps['data-testkey'];
+    const testKey = restProps['data-testid'];
     return (
         <Field validate={validate ? (value: any) => validate(value, name) : undefined} name={name}>
             {({ field, form }: FieldProps) => {
@@ -33,7 +33,7 @@ function FormikCountrySelect<FieldName, ErrorType>({
                     <CountrySelect
                         {...restProps}
                         {...field}
-                        data-testkey={testKey}
+                        data-testid={testKey}
                         error={getErrorPropForFormikInput({ field, form, context, error })}
                         onChange={(value) => {
                             form.setFieldValue(field.name, value);

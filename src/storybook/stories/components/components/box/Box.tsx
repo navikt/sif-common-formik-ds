@@ -1,5 +1,5 @@
 import React from 'react';
-import bemUtils from '../../../sif-common-formik-ds/utils/bemUtils';
+import bemUtils from '../../../../../sif-common-formik-ds/utils/bemUtils';
 import './box.scss';
 
 export type BoxMargin = 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl' | 'none';

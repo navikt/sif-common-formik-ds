@@ -9,6 +9,7 @@ export enum MockAnimals {
 type MockOption = Pick<CheckboxProps, 'value' | 'description' | 'error'> & {
     label: string;
     value: string;
+    ['data-testid']?: string;
 };
 
 export const mockAnimalOptions: MockOption[] = [
@@ -20,9 +21,11 @@ export const mockAnimalOptions: MockOption[] = [
     {
         label: 'Cat',
         value: MockAnimals.cat,
+        description: 'To be avoided',
     },
     {
         label: 'Fish',
         value: MockAnimals.fish,
+        description: 'If you please',
     },
 ];

@@ -1,10 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import FormikCheckboxGroup, {
-    FormikCheckboxGroupProps,
-} from '../../sif-common-formik-ds/components/formik-checkbox-group/FormikCheckboxGroup';
-import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
-import { mockAnimalOptions } from '../mock-data';
+import FormikCheckboxGroup from '../../../sif-common-formik-ds/components/formik-checkbox-group/FormikCheckboxGroup';
+import { withFormikWrapper } from '../../decorators/StoryFormikWrapper';
+import { mockAnimalOptions, MockAnimals } from '../../mock-data';
 
 export default {
     title: 'Component/FormikCheckboxGroup',
@@ -14,21 +12,35 @@ export default {
 
 const Template: ComponentStory<typeof FormikCheckboxGroup> = (args) => <FormikCheckboxGroup {...args} />;
 
+const fieldName = 'animals';
+
 export const Default = Template.bind({});
-const defaultArgs: FormikCheckboxGroupProps<any, any> = {
-    legend: 'Choose one or more animals',
-    description: 'Choose any animal except the catty one',
-    name: 'animals',
-    checkboxes: mockAnimalOptions,
-};
 
 Default.args = {
-    ...defaultArgs,
+    legend: 'Choose one or more animals',
+    description: 'Choose any animal except the catty one',
+    name: fieldName,
+    checkboxes: mockAnimalOptions,
 };
 Default.parameters = {
     formik: {
         initialValues: {
-            FormikCheckboxGroup: ['dog'],
+            [fieldName]: [],
+        },
+    },
+};
+
+export const WithInitialValues = Template.bind({});
+WithInitialValues.args = {
+    legend: 'Choose one or more animals',
+    description: 'The correct choice is set',
+    name: fieldName,
+    checkboxes: mockAnimalOptions,
+};
+WithInitialValues.parameters = {
+    formik: {
+        initialValues: {
+            [fieldName]: [MockAnimals.dog],
         },
     },
 };

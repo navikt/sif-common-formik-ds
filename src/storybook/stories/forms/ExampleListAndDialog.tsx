@@ -1,7 +1,7 @@
 import { Fieldset } from '@navikt/ds-react';
 import React from 'react';
-import { FormikModalFormAndList, TypedFormInputValidationProps } from '../../sif-common-formik-ds';
-import { ModalFormAndListLabels } from '../../sif-common-formik-ds/components/formik-modal-form/types';
+import { FormikModalFormAndList, TypedFormInputValidationProps } from '../../../sif-common-formik-ds';
+import { ModalFormAndListLabels } from '../../../sif-common-formik-ds/components/formik-modal-form/types';
 
 interface Props<FieldName> extends TypedFormInputValidationProps<FieldName, string> {
     name: FieldName;

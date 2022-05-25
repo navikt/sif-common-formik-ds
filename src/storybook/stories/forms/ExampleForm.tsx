@@ -2,16 +2,16 @@ import { Heading, Panel } from '@navikt/ds-react';
 import React from 'react';
 import '@navikt/ds-datepicker/lib/index.css';
 import { ISODateString } from '@navikt/ds-datepicker/lib/types';
-import FormBlock from '../../dev/components/form-block/FormBlock';
-import { getTypedFormComponents } from '../../sif-common-formik-ds/components/getTypedFormComponents';
-import { YesOrNo } from '../../sif-common-formik-ds/types';
-import { ValidationError } from '../../sif-common-formik-ds/validation/types';
-import { mockAnimalOptions, MockAnimals } from '../mock-data';
-import { getCheckedValidator, getRequiredFieldValidator } from '../../sif-common-formik-ds/validation';
-import FormikValidationErrorSummary from '../../sif-common-formik-ds/components/formik-validation-error-summary/FormikValidationErrorSummary';
-import getIntlFormErrorHandler from '../../sif-common-formik-ds/validation/intlFormErrorHandler';
+import { getTypedFormComponents } from '../../../sif-common-formik-ds/components/getTypedFormComponents';
+import { YesOrNo } from '../../../sif-common-formik-ds/types';
+import { ValidationError } from '../../../sif-common-formik-ds/validation/types';
+import { mockAnimalOptions, MockAnimals } from '../../mock-data';
+import { getCheckedValidator, getRequiredFieldValidator } from '../../../sif-common-formik-ds/validation';
+import FormikValidationErrorSummary from '../../../sif-common-formik-ds/components/formik-validation-error-summary/FormikValidationErrorSummary';
+import getIntlFormErrorHandler from '../../../sif-common-formik-ds/validation/intlFormErrorHandler';
 import { useIntl } from 'react-intl';
 import ExampleListAndDialog from './ExampleListAndDialog';
+import FormBlock from '../components/components/form-block/FormBlock';
 
 enum Fields {
     checked = 'checked',

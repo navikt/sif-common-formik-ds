@@ -1,26 +1,27 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import FormikYesOrNoQuestion from '../../sif-common-formik-ds/components/formik-yes-or-no-question/FormikYesOrNoQuestion';
-import { YesOrNo } from '../../sif-common-formik-ds/types';
-import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
+import FormikCountrySelect from '../../../sif-common-formik-ds/components/formik-country-select/FormikCountrySelect';
+import { withFormikWrapper } from '../../decorators/StoryFormikWrapper';
+// import { withFormik } from 'storybook-formik';
 
 export default {
-    title: 'Component/FormikYesOrNoQuestion',
-    component: FormikYesOrNoQuestion,
+    title: 'Component/FormikCountrySelect',
+    component: FormikCountrySelect,
     decorators: [withFormikWrapper],
-} as ComponentMeta<typeof FormikYesOrNoQuestion>;
+} as ComponentMeta<typeof FormikCountrySelect>;
 
-const Template: ComponentStory<typeof FormikYesOrNoQuestion> = (args) => <FormikYesOrNoQuestion {...args} />;
+const Template: ComponentStory<typeof FormikCountrySelect> = (args) => <FormikCountrySelect {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    legend: 'Answer yes or no',
-    name: 'yesOrNoQuestion',
+    label: 'FormikCountrySelect',
+    name: 'country',
+    value: 'abc',
 };
 Default.parameters = {
     formik: {
         initialValues: {
-            yesOrNoQuestion: YesOrNo.YES,
+            country: 'FLK',
         },
     },
 };
