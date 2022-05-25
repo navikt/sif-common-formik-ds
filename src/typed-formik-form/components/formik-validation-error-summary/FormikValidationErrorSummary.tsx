@@ -4,7 +4,11 @@ import { getAllFieldsWithErrors, getErrorForField } from '../../utils/typedFormE
 import ValidationSummary, { ValidationSummaryError } from '../helpers/ValidationSummary';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
 
-function FormikValidationErrorSummary() {
+interface Props {
+    wrapper?: (errorSummary) => JSX.Element;
+}
+
+const FormikValidationErrorSummary: React.FunctionComponent<Props> = ({ wrapper }) => {
     const context = React.useContext(TypedFormikFormContext);
     const formik = useFormikContext();
     if (formik && context && context.showErrors) {
@@ -24,10 +28,13 @@ function FormikValidationErrorSummary() {
             : undefined;
 
         if (errors) {
+            if (wrapper) {
+                return wrapper(<ValidationSummary errors={errors} />);
+            }
             return <ValidationSummary errors={errors} />;
         }
     }
     return null;
-}
+};
 
 export default FormikValidationErrorSummary;

@@ -7,7 +7,10 @@ import { getTypedFormComponents } from '../../typed-formik-form/components/getTy
 import { YesOrNo } from '../../typed-formik-form/types';
 import { ValidationError } from '../../typed-formik-form/validation/types';
 import { mockAnimalOptions, MockAnimals } from '../mock-data';
-import { getCheckedValidator } from '../../typed-formik-form/validation';
+import { getCheckedValidator, getRequiredFieldValidator } from '../../typed-formik-form/validation';
+import FormikValidationErrorSummary from '../../typed-formik-form/components/formik-validation-error-summary/FormikValidationErrorSummary';
+import getIntlFormErrorHandler from '../../typed-formik-form/validation/intlFormErrorHandler';
+import { useIntl } from 'react-intl';
 
 enum Fields {
     checked = 'checked',
@@ -44,6 +47,7 @@ interface FieldValues {
 const Form = getTypedFormComponents<Fields, FieldValues, ValidationError>();
 
 const ExampleForm: React.FunctionComponent = () => {
+    const intl = useIntl();
     return (
         <Panel border={true} style={{ margin: '1rem' }}>
             <Heading size="medium">Example form</Heading>
@@ -55,7 +59,8 @@ const ExampleForm: React.FunctionComponent = () => {
                         <Form.Form
                             includeButtons={true}
                             onValidSubmit={() => console.log('submit')}
-                            onCancel={() => console.log('cancel')}>
+                            onCancel={() => console.log('cancel')}
+                            formErrorHandler={getIntlFormErrorHandler(intl)}>
                             <FormBlock>
                                 <Form.DatePicker name={Fields.date} label="Choose a date" />
                             </FormBlock>
@@ -109,7 +114,7 @@ const ExampleForm: React.FunctionComponent = () => {
                             {values.yesOrNo === YesOrNo.YES && (
                                 <FormBlock margin="l">
                                     <Panel border={true}>
-                                        <Form.InputGroup name={Fields.group} legend="ABC">
+                                        <Form.InputGroup name={Fields.group} legend="Some more questions then">
                                             Some content in this group
                                             <FormBlock>
                                                 <Form.Textarea
@@ -133,7 +138,11 @@ const ExampleForm: React.FunctionComponent = () => {
                                 </FormBlock>
                             )}
                             <FormBlock>
-                                <Form.Select label="Choose ONE animal" name={Fields.radio}>
+                                <Form.Select
+                                    label="Choose ONE animal"
+                                    name={Fields.radio}
+                                    validate={getRequiredFieldValidator()}>
+                                    <option></option>
                                     {mockAnimalOptions.map((a) => (
                                         <option key={a.value} value={a.value}>
                                             {a.label}
@@ -144,22 +153,26 @@ const ExampleForm: React.FunctionComponent = () => {
                             <FormBlock>
                                 <Form.DateRangePicker
                                     legend="Choose some daterange"
-                                    fromInputProps={{ label: 'From', name: Fields.dateRange_from }}
-                                    toInputProps={{ label: 'To', name: Fields.dateRange_to }}
+                                    fromInputProps={{ label: 'Daterange from', name: Fields.dateRange_from }}
+                                    toInputProps={{ label: 'Daterange to', name: Fields.dateRange_to }}
                                 />
                             </FormBlock>
                             <FormBlock>
                                 <Form.DateIntervalPicker
                                     legend="Choose a date interval"
-                                    fromDatepickerProps={{ label: 'From', name: Fields.dateRange_from }}
-                                    toDatepickerProps={{ label: 'To', name: Fields.dateRange_to }}
+                                    fromDatepickerProps={{ label: 'Interval from', name: Fields.dateRange_from }}
+                                    toDatepickerProps={{ label: 'Interval to', name: Fields.dateRange_to }}
                                 />
                             </FormBlock>
                             <FormBlock>
-                                <Form.ConfirmationCheckbox name={Fields.confirmation} label="abc">
+                                <Form.ConfirmationCheckbox
+                                    name={Fields.confirmation}
+                                    label="I confirm"
+                                    validate={getCheckedValidator()}>
                                     Please confirm that you do not like cats
                                 </Form.ConfirmationCheckbox>
                             </FormBlock>
+                            <FormikValidationErrorSummary wrapper={(summary) => <FormBlock>{summary}</FormBlock>} />
                         </Form.Form>
                     );
                 }}

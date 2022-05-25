@@ -117,7 +117,7 @@ function FormikDatepicker<FieldName, ErrorType>({
                         description={description}>
                         <Datepicker
                             inputId={elementId}
-                            inputLabel={'abc'}
+                            inputLabel={label}
                             locale={getLocaleToUse(locale || intl.locale)}
                             {...restProps}
                             inputProps={{
