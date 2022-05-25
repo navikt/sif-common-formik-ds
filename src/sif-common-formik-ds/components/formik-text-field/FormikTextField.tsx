@@ -1,15 +1,15 @@
 import { TextField, TextFieldProps } from '@navikt/ds-react';
 import React from 'react';
 import { FastField, Field, FieldProps } from 'formik';
-import { InputWidths, TestProps, TypedFormInputValidationProps, UseFastFieldProps } from '../../types';
-import { getInputWidthClassName } from '../../utils/divUtils';
-import { getFeilPropForFormikInput } from '../../utils/typedFormErrorUtils';
+import { TestProps, TypedFormInputValidationProps, UseFastFieldProps } from '../../types';
+import { getErrorPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
 import './formikTextField.css';
+import { getTextFieldWidthClassName, TextFieldWidths } from './FormikTextFieldUtils';
 
 interface OwnProps<FieldName> extends Omit<TextFieldProps, 'name' | 'children' | 'width'> {
     name: FieldName;
-    width?: InputWidths;
+    width?: TextFieldWidths;
 }
 
 export type FormikTextFieldProps<FieldName, ErrorType> = OwnProps<FieldName> &
@@ -38,8 +38,8 @@ function FormikTextField<FieldName, ErrorType>({
                         {...restProps}
                         {...field}
                         autoComplete={autoComplete}
-                        className={getInputWidthClassName(width, className)}
-                        error={getFeilPropForFormikInput({ field, form, context, error })}
+                        className={getTextFieldWidthClassName(width, className)}
+                        error={getErrorPropForFormikInput({ field, form, context, error })}
                         value={field.value === undefined ? '' : field.value}
                     />
                 );

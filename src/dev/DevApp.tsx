@@ -1,15 +1,10 @@
 import React from 'react';
 import '@navikt/ds-css';
-import ExampleForm from '../stories/example-form/ExampleForm';
-import AppIntlProvider from './app-intl-provider/AppIntlProvider';
 import '@navikt/ds-datepicker/lib/index.css';
+import AppIntlProvider from '../storybook/stories/components/app-intl-provider/AppIntlProvider';
 
 const App: React.FunctionComponent = () => {
-    return (
-        <AppIntlProvider locale="nb">
-            <ExampleForm />
-        </AppIntlProvider>
-    );
+    return <AppIntlProvider locale="nb">Start storybook</AppIntlProvider>;
 };
 
 export default App;

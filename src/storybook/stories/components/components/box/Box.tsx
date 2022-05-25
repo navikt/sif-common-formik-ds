@@ -1,5 +1,5 @@
 import React from 'react';
-import bemHelper from '../../utils/bemUtils';
+import bemUtils from '../../../../../sif-common-formik-ds/utils/bemUtils';
 import './box.scss';
 
 export type BoxMargin = 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl' | 'none';
@@ -13,7 +13,7 @@ interface Props {
     children: React.ReactNode;
 }
 
-const bem = bemHelper('box');
+const bem = bemUtils('box');
 
 const Box = ({ margin, padBottom, className, textAlignCenter, id, children }: Props) => {
     const classNames = bem.classNames(

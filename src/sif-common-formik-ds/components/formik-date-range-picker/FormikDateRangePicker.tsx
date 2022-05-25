@@ -7,9 +7,9 @@ import FormikDatepicker, {
     DatepickerLimitiations,
     DatePickerPresentationProps,
 } from '../formik-datepicker/FormikDatepicker';
-import { getDateRangePickerLimitations } from './dateRangePickerUtils';
-import './dateRangePicker.scss';
 import FormikInputGroup from '../formik-input-group/FormikInputGroup';
+import './dateRangePicker.scss';
+import { getDateRangePickerLimitations } from './dateRangePickerUtils';
 
 interface OwnProps<FieldName, ErrorType> {
     legend: string;

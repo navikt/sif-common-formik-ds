@@ -2,7 +2,7 @@ import { Textarea, TextareaProps } from '@navikt/ds-react';
 import React from 'react';
 import { FastField, Field, FieldProps } from 'formik';
 import { TestProps, TypedFormInputValidationProps, UseFastFieldProps } from '../../types';
-import { getFeilPropForFormikInput } from '../../utils/typedFormErrorUtils';
+import { getErrorPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
 
 interface OwnProps<FieldName> extends Omit<TextareaProps, 'name' | 'defaultValue'> {
@@ -30,7 +30,7 @@ function FormikTextarea<FieldName, ErrorType>({
                     <Textarea
                         {...restProps}
                         {...field}
-                        error={getFeilPropForFormikInput({ field, form, context, error })}
+                        error={getErrorPropForFormikInput({ field, form, context, error })}
                         onChange={(evt) => {
                             form.setFieldValue(field.name, evt.target.value);
                             if (context) {

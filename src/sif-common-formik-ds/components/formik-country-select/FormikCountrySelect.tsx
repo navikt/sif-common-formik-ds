@@ -2,7 +2,7 @@ import { SelectProps } from '@navikt/ds-react';
 import React from 'react';
 import { Field, FieldProps } from 'formik';
 import { TestProps, TypedFormInputValidationProps } from '../../types';
-import { getFeilPropForFormikInput } from '../../utils/typedFormErrorUtils';
+import { getErrorPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
 import CountrySelect from './CountrySelect';
 
@@ -25,7 +25,7 @@ function FormikCountrySelect<FieldName, ErrorType>({
     ...restProps
 }: FormikCountrySelectProps<FieldName, ErrorType>) {
     const context = React.useContext(TypedFormikFormContext);
-    const testKey = restProps['data-testkey'];
+    const testKey = restProps['data-testid'];
     return (
         <Field validate={validate ? (value: any) => validate(value, name) : undefined} name={name}>
             {({ field, form }: FieldProps) => {
@@ -33,8 +33,8 @@ function FormikCountrySelect<FieldName, ErrorType>({
                     <CountrySelect
                         {...restProps}
                         {...field}
-                        data-testkey={testKey}
-                        error={getFeilPropForFormikInput({ field, form, context, error })}
+                        data-testid={testKey}
+                        error={getErrorPropForFormikInput({ field, form, context, error })}
                         onChange={(value) => {
                             form.setFieldValue(field.name, value);
                             if (context) {

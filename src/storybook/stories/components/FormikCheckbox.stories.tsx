@@ -1,26 +1,26 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import FormikTextField from '../../sif-common-formik-ds/components/formik-text-field/FormikTextField';
-import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
+import FormikCheckbox from '../../../sif-common-formik-ds/components/formik-checkbox/FormikCheckbox';
+import { withFormikWrapper } from '../../decorators/StoryFormikWrapper';
 
 export default {
-    title: 'Component/FormikTextField',
-    component: FormikTextField,
+    title: 'Component/FormikCheckbox',
+    component: FormikCheckbox,
     decorators: [withFormikWrapper],
-} as ComponentMeta<typeof FormikTextField>;
+} as ComponentMeta<typeof FormikCheckbox>;
 
-const Template: ComponentStory<typeof FormikTextField> = (args) => <FormikTextField {...args} />;
+const Template: ComponentStory<typeof FormikCheckbox> = (args) => <FormikCheckbox {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    label: 'FormikTextField',
-    name: 'FormikTextField',
-    description: 'Some description i appropriate',
+    label: 'FormikCheckbox',
+    name: 'formikCheckbox',
+    value: 'abc',
 };
 Default.parameters = {
     formik: {
         initialValues: {
-            FormikTextField: 'inital value',
+            formikCheckbox: true,
         },
     },
 };
@@ -38,7 +38,7 @@ Disabled.parameters = {
 export const WithError = Template.bind({});
 WithError.args = {
     ...Default.args,
-    error: 'This is the error',
+    error: 'This',
 };
 
 WithError.parameters = {

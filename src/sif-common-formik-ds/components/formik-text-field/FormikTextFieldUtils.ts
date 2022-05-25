@@ -1,7 +1,7 @@
-import { InputWidths } from '../types';
+export type TextFieldWidths = '100%' | 'xxl' | 'xl' | 'l' | 'm' | 's' | 'xs' | 'xxs';
 
-export const getInputWidthClassName = (
-    width: InputWidths | undefined,
+export const getTextFieldWidthClassName = (
+    width: TextFieldWidths | undefined,
     otherClassName: string | undefined
 ): string | undefined => {
     const allClassNames: string[] = [];

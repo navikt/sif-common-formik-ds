@@ -17,16 +17,16 @@ function FormikYesOrNoQuestion<FieldName, ErrorType>({
     ...restProps
 }: FormikYesOrNoQuestionProps<FieldName, ErrorType> & TypedFormInputValidationProps<FieldName, ErrorType>) {
     const { yes: yesLabel = 'Ja', no: noLabel = 'Nei' } = labels || {};
-    const testKey = restProps['data-testkey'];
-    delete restProps['data-testkey'];
+    const testKey = restProps['data-testid'];
+    delete restProps['data-testid'];
 
     return (
         <FormikRadioGroup<FieldName, ErrorType>
-            data-testkey={testKey}
+            data-testid={testKey}
             {...restProps}
             radios={[
-                { label: yesLabel, value: YesOrNo.YES, ['data-testkey']: testKey ? `${testKey}_yes` : undefined },
-                { label: noLabel, value: YesOrNo.NO, ['data-testkey']: testKey ? `${testKey}_no` : undefined },
+                { label: yesLabel, value: YesOrNo.YES, ['data-testid']: testKey ? `${testKey}_yes` : undefined },
+                { label: noLabel, value: YesOrNo.NO, ['data-testid']: testKey ? `${testKey}_no` : undefined },
             ]}
             name={name}
         />

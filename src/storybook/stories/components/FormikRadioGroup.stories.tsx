@@ -2,9 +2,9 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import FormikRadioGroup, {
     FormikRadioGroupProps,
-} from '../../sif-common-formik-ds/components/formik-radio-group/FormikRadioGroup';
-import { withFormikWrapper } from '../decorators/StoryFormikWrapper';
-import { mockAnimalOptions } from '../mock-data';
+} from '../../../sif-common-formik-ds/components/formik-radio-group/FormikRadioGroup';
+import { withFormikWrapper } from '../../decorators/StoryFormikWrapper';
+import { mockAnimalOptions } from '../../mock-data';
 
 export default {
     title: 'Component/FormikRadioGroup',
