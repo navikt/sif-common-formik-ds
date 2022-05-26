@@ -1,6 +1,6 @@
 {
     "name": "@navikt/sif-common-formik-ds",
-    "version": "0.1.0-beta.5",
+    "version": "0.1.0-beta.6",
     "private": false,
     "scripts": {
         "start": "react-scripts start",
@@ -9,10 +9,11 @@
         "eject": "react-scripts eject",
         "storybook": "start-storybook -p 6006 -s public",
         "build-storybook": "build-storybook -s public",
-        "build-lib": "npm-run-all clean-lib compile-lib-script copy-files-to-lib",
+        "build-lib": "npm-run-all clean-lib compile-lib-script copy-sass-files-to-lib copy-css-files-to-lib",
         "clean-lib": "rimraf ./lib",
         "compile-lib-script": "tsc -p tsconfig-build-lib.json",
-        "copy-files-to-lib": "copyfiles -u 2 \"src/sif-common-formik-ds/**/*.scss\" lib"
+        "copy-sass-files-to-lib": "copyfiles -u 2 \"src/sif-common-formik-ds/**/*.scss\" lib",
+        "copy-css-files-to-lib": "copyfiles -u 2 \"src/sif-common-formik-ds/**/*.css\" lib"
     },
     "dependencies": {
         "i18n-iso-countries": "^7.4.0",
