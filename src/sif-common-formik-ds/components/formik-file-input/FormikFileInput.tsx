@@ -18,7 +18,7 @@ interface OwnProps<FieldName> {
     onClick?: () => void;
 }
 
-export type FormikFileInputProps<FieldName> = OwnProps<FieldName> & Omit<TextFieldProps, ''>;
+export type FormikFileInputProps<FieldName> = OwnProps<FieldName> & Omit<TextFieldProps, 'label'>;
 
 function FormikFileInput<FieldName, ErrorType>({
     name,
