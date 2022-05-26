@@ -7,12 +7,13 @@ import UploadSvg from './UploadSvg';
 
 interface FileInputProps {
     id: string;
-    label: string;
+    legend: string;
+    description?: React.ReactNode;
+    buttonLabel: string;
     name: string;
     onFilesSelect: (files: File[]) => void;
     multiple?: boolean;
     accept: string;
-    description?: React.ReactNode;
     error?: FormError;
     onClick?: () => void;
 }
@@ -58,13 +59,13 @@ export default class FileInput extends React.Component<FileInputProps> {
     }
 
     render() {
-        const { id, name, label, error, description, multiple, onClick, accept } = this.props;
+        const { id, name, buttonLabel, error, description, multiple, legend, onClick, accept } = this.props;
         const inputId = `${id}-input`;
 
         return (
             <SkjemagruppeQuestion
                 error={error}
-                legend={'ABC'}
+                legend={legend}
                 description={description}
                 className={`fileInput ${error !== undefined ? 'fileInput--withError' : ''}`}>
                 <label
@@ -80,7 +81,7 @@ export default class FileInput extends React.Component<FileInputProps> {
                     <div className="attachmentButton__icon">
                         <UploadSvg />
                     </div>
-                    <Label className="attachmentButton__label">{label}</Label>
+                    <Label className="attachmentButton__label">{buttonLabel}</Label>
                     <input
                         id={inputId}
                         name={name}

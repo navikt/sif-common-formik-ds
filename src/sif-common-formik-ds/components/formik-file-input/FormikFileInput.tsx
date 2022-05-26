@@ -8,7 +8,9 @@ import { TextFieldProps } from '@navikt/ds-react';
 
 interface OwnProps<FieldName> {
     name: FieldName;
-    label: string;
+    legend: string;
+    description?: React.ReactNode;
+    buttonLabel: string;
     accept: string;
     multiple?: boolean;
     error?: FormError;
@@ -16,16 +18,17 @@ interface OwnProps<FieldName> {
     onClick?: () => void;
 }
 
-export type FormikFileInputProps<FieldName> = OwnProps<FieldName> & Omit<TextFieldProps, ''>;
+export type FormikFileInputProps<FieldName> = OwnProps<FieldName> & Omit<TextFieldProps, 'label'>;
 
 function FormikFileInput<FieldName, ErrorType>({
-    label,
     name,
+    legend,
+    description,
+    buttonLabel,
     accept,
     multiple = true,
     validate,
     onFilesSelect,
-    description,
     error,
     onClick,
 }: FormikFileInputProps<FieldName> & TypedFormInputValidationProps<FieldName, ErrorType>) {
@@ -41,13 +44,14 @@ function FormikFileInput<FieldName, ErrorType>({
                             <FileInput
                                 id={field.name}
                                 name={field.name}
-                                label={label}
+                                legend={legend}
+                                description={description}
+                                buttonLabel={buttonLabel}
                                 onClick={onClick}
                                 onFilesSelect={(files) => onFilesSelect(files, arrayHelpers)}
                                 multiple={multiple}
                                 accept={accept}
                                 error={getErrorPropForFormikInput({ field, form, context, error })}
-                                description={description}
                             />
                         );
                     }}

@@ -67,7 +67,8 @@ function TypedFormikForm<FormValues, ErrorType>({
     const [cleanupState, setCleanupState] = useState({ hasCleanedUp: false, counter: 0 });
 
     const ref = useRef<any>({ isSubmitting, isValid });
-    const showErrors = formik?.status?.showErrors === true;
+    const showErrors = formik?.status?.showErrors === true || formik?.initialStatus?.showErrors === true;
+
     useEffect(() => {
         ref.current = {
             isSubmitting,

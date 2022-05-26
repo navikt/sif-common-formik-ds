@@ -1,12 +1,12 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
+import withFormik from 'storybook-formik';
 import FormikTextField from '../../../sif-common-formik-ds/components/formik-text-field/FormikTextField';
-import { withFormikWrapper } from '../../decorators/StoryFormikWrapper';
 
 export default {
     title: 'Component/FormikTextField',
     component: FormikTextField,
-    decorators: [withFormikWrapper],
+    decorators: [withFormik],
 } as ComponentMeta<typeof FormikTextField>;
 
 const Template: ComponentStory<typeof FormikTextField> = (args) => <FormikTextField {...args} />;
@@ -23,24 +23,4 @@ Default.parameters = {
             FormikTextField: 'inital value',
         },
     },
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-    ...Default.args,
-    disabled: true,
-};
-
-Disabled.parameters = {
-    ...Default.parameters,
-};
-
-export const WithError = Template.bind({});
-WithError.args = {
-    ...Default.args,
-    error: 'This is the error',
-};
-
-WithError.parameters = {
-    ...Default.parameters,
 };

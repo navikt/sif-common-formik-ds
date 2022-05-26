@@ -1,13 +1,12 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import FormikCountrySelect from '../../../sif-common-formik-ds/components/formik-country-select/FormikCountrySelect';
-import { withFormikWrapper } from '../../decorators/StoryFormikWrapper';
-// import { withFormik } from 'storybook-formik';
+import withFormik from 'storybook-formik';
 
 export default {
     title: 'Component/FormikCountrySelect',
     component: FormikCountrySelect,
-    decorators: [withFormikWrapper],
+    decorators: [withFormik],
 } as ComponentMeta<typeof FormikCountrySelect>;
 
 const Template: ComponentStory<typeof FormikCountrySelect> = (args) => <FormikCountrySelect {...args} />;
@@ -24,24 +23,4 @@ Default.parameters = {
             country: 'FLK',
         },
     },
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-    ...Default.args,
-    disabled: true,
-};
-
-Disabled.parameters = {
-    ...Default.parameters,
-};
-
-export const WithError = Template.bind({});
-WithError.args = {
-    ...Default.args,
-    error: 'This',
-};
-
-WithError.parameters = {
-    ...Default.parameters,
 };

@@ -99,7 +99,7 @@ const ExampleForm: React.FunctionComponent = () => {
                             <FormBlock>
                                 <Form.FileInput
                                     name={Fields.attachments}
-                                    label="Choose picture"
+                                    buttonLabel="Choose picture"
                                     onFilesSelect={(evt) => console.log(evt)}
                                     accept={'.png'}
                                     description="Dette er en liten tekst som trengs her"
