@@ -98,6 +98,7 @@ const ExampleForm: React.FunctionComponent = () => {
                             </FormBlock>
                             <FormBlock>
                                 <Form.FileInput
+                                    legend="Velg filer"
                                     name={Fields.attachments}
                                     buttonLabel="Choose picture"
                                     onFilesSelect={(evt) => console.log(evt)}

@@ -5,10 +5,11 @@ import ValidationSummary, { ValidationSummaryError } from '../helpers/Validation
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
 
 interface Props {
+    heading?: string;
     wrapper?: (errorSummary: JSX.Element) => JSX.Element;
 }
 
-const FormikValidationErrorSummary: React.FunctionComponent<Props> = ({ wrapper }) => {
+const FormikValidationErrorSummary: React.FunctionComponent<Props> = ({ heading, wrapper }) => {
     const context = React.useContext(TypedFormikFormContext);
     const formik = useFormikContext();
     if (formik && context && context.showErrors) {
@@ -31,7 +32,7 @@ const FormikValidationErrorSummary: React.FunctionComponent<Props> = ({ wrapper 
             if (wrapper) {
                 return wrapper(<ValidationSummary errors={errors} />);
             }
-            return <ValidationSummary errors={errors} />;
+            return <ValidationSummary heading={heading || 'Feil i skjema'} errors={errors} />;
         }
     }
     return null;

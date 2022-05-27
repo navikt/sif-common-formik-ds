@@ -19,6 +19,7 @@ export interface TypedFormikFormProps<FormValues, ErrorType> {
     runDelayedFormValidation?: boolean;
     formErrorHandler?: CustomFormErrorHandler<ErrorType>;
     formFooter?: React.ReactNode;
+    errorSummaryTitle?: string;
     noButtonsContentRenderer?: () => React.ReactNode;
     cleanup?: (values: FormValues) => FormValues;
     onValidSubmit?: () => void;
@@ -56,6 +57,7 @@ function TypedFormikForm<FormValues, ErrorType>({
     cancelButtonType,
     formErrorHandler,
     formFooter,
+    errorSummaryTitle,
     onCancel,
     onValidSubmit,
     noButtonsContentRenderer,
@@ -148,7 +150,7 @@ function TypedFormikForm<FormValues, ErrorType>({
                 {children}
                 {includeValidationSummary && !formik.isValid && isValidationErrorsVisible(formik) && (
                     <div style={{ marginTop: '2rem' }}>
-                        <FormikValidationErrorSummary />
+                        <FormikValidationErrorSummary heading={errorSummaryTitle} />
                     </div>
                 )}
                 {includeButtons && (
