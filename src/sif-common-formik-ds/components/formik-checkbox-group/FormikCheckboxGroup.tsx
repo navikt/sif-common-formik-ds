@@ -5,7 +5,7 @@ import { TestProps, TypedFormInputValidationProps, UseFastFieldProps } from '../
 import { getErrorPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
 
-type LocalCheckboxProps = Omit<CheckboxProps, 'children'> & {
+type LocalCheckboxProps = Omit<CheckboxProps, 'children' | 'name'> & {
     label: React.ReactNode;
 } & TestProps;
 
@@ -48,9 +48,9 @@ function FormikCheckboxGroup<FieldName, ErrorType>({
                 return (
                     <CheckboxGroup
                         {...restProps}
-                        {...field}
                         value={getFieldValueArray(field.value)}
                         legend={legend}
+                        className="focusableFieldset"
                         error={getErrorPropForFormikInput({ field, form, context, error })}
                         onChange={(value) => {
                             form.setFieldValue(field.name, value);
@@ -58,8 +58,12 @@ function FormikCheckboxGroup<FieldName, ErrorType>({
                                 afterOnChange(value);
                             }
                         }}>
-                        {checkboxes.map(({ value, label, name, ...cbRestProps }, index) => (
-                            <Checkbox key={`${name}_${value || index}`} {...cbRestProps} name={name} value={value}>
+                        {checkboxes.map(({ value, label, ...cbRestProps }, index) => (
+                            <Checkbox
+                                key={`${name}_${value || index}`}
+                                {...cbRestProps}
+                                name={name as any}
+                                value={value}>
                                 {label}
                             </Checkbox>
                         ))}

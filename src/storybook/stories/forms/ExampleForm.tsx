@@ -23,6 +23,7 @@ enum Fields {
     name = 'name',
     group = 'group',
     radio = 'radio',
+    select = 'select',
     description = 'description',
     time = 'time',
     yesOrNo = 'yesOrNo',
@@ -91,6 +92,7 @@ const ExampleForm: React.FunctionComponent = () => {
                                         { label: 'Cat', value: MockAnimals.cat, disabled: true },
                                         { label: 'Fish', value: MockAnimals.fish },
                                     ]}
+                                    validate={getCheckedValidator()}
                                 />
                             </FormBlock>
                             <FormBlock>
@@ -134,13 +136,6 @@ const ExampleForm: React.FunctionComponent = () => {
                                                 />
                                             </FormBlock>
                                             <FormBlock>
-                                                <Form.RadioGroup
-                                                    legend="Choose ONE animal"
-                                                    name={Fields.radio}
-                                                    radios={mockAnimalOptions}
-                                                />
-                                            </FormBlock>
-                                            <FormBlock>
                                                 <Form.TimeInput label="What's the time?" name={Fields.time} />
                                             </FormBlock>
                                         </Form.InputGroup>
@@ -150,7 +145,7 @@ const ExampleForm: React.FunctionComponent = () => {
                             <FormBlock>
                                 <Form.Select
                                     label="Choose ONE animal"
-                                    name={Fields.radio}
+                                    name={Fields.select}
                                     validate={getRequiredFieldValidator()}>
                                     <option></option>
                                     {mockAnimalOptions.map((a) => (
@@ -172,6 +167,14 @@ const ExampleForm: React.FunctionComponent = () => {
                                     legend="Choose a date interval"
                                     fromDatepickerProps={{ label: 'Interval from', name: Fields.dateRange_from }}
                                     toDatepickerProps={{ label: 'Interval to', name: Fields.dateRange_to }}
+                                />
+                            </FormBlock>
+                            <FormBlock>
+                                <Form.RadioGroup
+                                    legend="Choose ONE animal"
+                                    name={Fields.radio}
+                                    radios={mockAnimalOptions}
+                                    validate={getCheckedValidator()}
                                 />
                             </FormBlock>
                             <FormBlock>

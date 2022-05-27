@@ -5,7 +5,7 @@ import { TestProps, TypedFormInputValidationProps, UseFastFieldProps } from '../
 import { getErrorPropForFormikInput } from '../../utils/typedFormErrorUtils';
 import { TypedFormikFormContext } from '../typed-formik-form/TypedFormikForm';
 
-type FormikRadioProp = Omit<RadioProps, 'children'> & {
+type FormikRadioProp = Omit<RadioProps, 'children' | 'name'> & {
     label: React.ReactNode;
 } & TestProps;
 
@@ -35,14 +35,16 @@ function FormikRadioGroup<FieldName, ErrorType>({
                 return (
                     <RadioGroup
                         {...restProps}
+                        name={field.name}
                         error={getErrorPropForFormikInput({ field, form, context, error })}
                         value={field.value}>
                         {radios.map((rb, idx) => {
+                            console.log(field.name);
                             return (
                                 <Radio
                                     key={idx}
                                     {...rb}
-                                    name={name as any}
+                                    name={field.name as any}
                                     onChange={(evt) => {
                                         form.setFieldValue(field.name, evt.target.value);
                                         if (context) {
